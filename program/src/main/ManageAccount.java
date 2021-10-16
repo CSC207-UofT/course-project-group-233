@@ -6,7 +6,7 @@ public class ManageAccount {
      * */
 
     private Account current_account = null;
-    private List<Account> name;
+    private ArrayList<Account> name;
 
     public ManageAccount() {
         this.name = new ArrayList<>();
@@ -24,17 +24,16 @@ public class ManageAccount {
             }
             Account new_account = new Account(word, new_user,Calendar.getInstance().getTime(), birthday, gender);
             this.name.add(new_account);
-            return "Account has been created! Welcome!";
         }else{
             Account new_account = new Account(word, new_user,Calendar.getInstance().getTime(), birthday, gender);
             this.name.add(new_account);
-            return "Account has been created! Welcome!";
         }
+        return "Account has been Successfully created! Welcome!";
     }
 
-    public String changePassword (String new_code, Account useraccount) {
+    public String changePassword (String new_code, Account user_account) {
         // if user wants to change pass code, then provide new pass word and account info to change it
-        useraccount.setPassword(new_code);
+        user_account.setPassword(new_code);
         return "Password has been changed!";
     }
 
@@ -60,6 +59,10 @@ public class ManageAccount {
 
     public Account getCurrent_account() {
         return this.current_account;
+    }
+
+    public ArrayList<Account> getName() {
+        return this.name;
     }
 }
 

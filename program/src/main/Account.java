@@ -55,7 +55,7 @@ public class Account {
 
     public void update_food_record(Calendar date, String fd) { //add food eaten at certain date(key) to the HashMap
         String temp = ((Integer) date.get(Calendar.YEAR)).toString() + ',' +
-                ((Integer)date.get(Calendar.MONTH)).toString() + ',' +
+                ((Integer) date.get(Calendar.MONTH)).toString() + ',' +
                 ((Integer) date.get(Calendar.DAY_OF_MONTH)).toString(); // turn date into a string representing date
         if (this.date_record.contains(temp)) {
             int index = this.date_record.indexOf(temp);

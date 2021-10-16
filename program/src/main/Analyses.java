@@ -21,7 +21,7 @@ public class Analyses {
         this.period = period;
     }
 
-    public double average_calorie_intake (Account user, ManageFood mf) {
+    public int average_calorie_intake (Account user, ManageFood mf) {
         /*
           This function calculate the average calories that user take in by food in certain recent period.
           e.g. recent 7 days, recent 30 days, recent 365 days
@@ -29,11 +29,11 @@ public class Analyses {
          * @return the average calorie intake in certain recent period
          */
         double count = 0;
-        for(int i = user.getFood_record().size() - 1; i > user.getFood_record().size() - period; i--) {
+        for(int i = user.getFood_record().size() - 1; i >= user.getFood_record().size() - period; i--) {
             for(String j : user.getFood_record().get(i)) {
-                count += mf.SeeCal(j);
+                count += mf.GetCalorie(j);
             }
         }
-        return count/period;
+        return (int) count/period;
     }
 }
