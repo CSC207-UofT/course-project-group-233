@@ -6,7 +6,7 @@ public class ManageAccount {
      * */
 
     private Account current_account = null;
-    private ArrayList<Account> name;
+    private final ArrayList<Account> name;
 
     public ManageAccount() {
         this.name = new ArrayList<>();
@@ -24,17 +24,49 @@ public class ManageAccount {
             }
             Account new_account = new Account(word, new_user,Calendar.getInstance().getTime(), birthday, gender);
             this.name.add(new_account);
+            this.current_account = new_account;
         }else{
             Account new_account = new Account(word, new_user,Calendar.getInstance().getTime(), birthday, gender);
             this.name.add(new_account);
+            this.current_account = new_account;
         }
-        return "Account has been Successfully created! Welcome!";
+        return "Account has been successfully created! Welcome!";
     }
 
-    public String changePassword (String new_code, Account user_account) {
+    public String changePassword (String new_code) {
         // if user wants to change pass code, then provide new pass word and account info to change it
-        user_account.setPassword(new_code);
+        this.current_account.setPassword(new_code);
         return "Password has been changed!";
+    }
+
+    public void update_food_record(Calendar date, String fd, ManageFood mf) {
+        //add food eaten at certain date(key) to the HashMap
+        String temp = ((Integer) date.get(Calendar.YEAR)).toString() + ',' +
+                (date.get(Calendar.MONTH)) + ',' +
+                (date.get(Calendar.DAY_OF_MONTH)); // turn date into a string representing date
+        if (this.current_account.getDate_record().contains(temp)) {
+            int index = this.current_account.getDate_record().indexOf(temp);
+            this.current_account.getFood_record().get(index).add(fd);//only add fd into inner ArrayList in food_record
+            Double temp1 = this.current_account.getCalorie_record().get(index) + mf.GetCalorie(fd);
+            this.current_account.getCalorie_record().add(temp1);
+        }
+        else {
+            ArrayList<String> fd_temp = new ArrayList<>();
+            fd_temp.add(fd);
+            this.current_account.getDate_record().add(temp);
+            this.current_account.getFood_record().add(fd_temp);
+            this.current_account.getCalorie_record().add(mf.GetCalorie(fd));
+        }
+    }
+
+    public String changeUsername (String new_name) {
+        for (Account i : this.name) {
+            if (i.getName_for_user().equals(new_name)) {
+                return "This username has been used. Please try another one.";
+            }
+        }
+        this.current_account.setUsername(new_name);
+        return "Your username has successfully changed.";
     }
 
     public String sign_in(String name_of_user, String passcode){
@@ -59,10 +91,6 @@ public class ManageAccount {
 
     public Account getCurrent_account() {
         return this.current_account;
-    }
-
-    public ArrayList<Account> getName() {
-        return this.name;
     }
 }
 

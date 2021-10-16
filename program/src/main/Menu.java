@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Calendar;
 
 public class Menu {
@@ -8,19 +7,31 @@ public class Menu {
      * This is a Menu class that could give contents in different use case class
      */
 
-    public void show_manage_account (ManageAccount mg, int period, ManageFood mf) {
-        //user info showed after clicking Account in menu
-        System.out.println(mg.toString());
-        if (period < mg.getCurrent_account().getDate_record().size()) {
-            Analyses an = new Analyses(period);
-            System.out.println("The average intake calories for recent " + period +
-                    "days(s) is " + an.average_calorie_intake(mg.getCurrent_account(), mf));
-        }
+    private final ManageFood mf;
+    private final ManageAccount ma;
+
+    public Menu() {
+        this.ma = new ManageAccount();
+        this.mf = new ManageFood();
     }
 
-    public void show_given_food_calorie (ManageFood mf, ManageAccount ma, String fd, Calendar date){
+    public void show_given_food_calorie (String fd, Calendar date, double weight){
         //food calorie showed after clicking Food and entering food name in menu
-        ma.getCurrent_account().update_food_record(date, fd);
+        mf.change_food_weight(fd, weight);
+        ma.update_food_record(date, fd, this.mf);
         System.out.println("The calorie of " + fd + " is about " + mf.GetCalorie(fd));
+    }
+
+    public double get_food_analyses(int period) {
+        Analyses an = new Analyses(period);
+        return an.average_calorie_intake(this.ma.getCurrent_account());
+    }
+
+    public ManageFood getMf() {
+        return this.mf;
+    }
+
+    public ManageAccount getMa() {
+        return this.ma;
     }
 }

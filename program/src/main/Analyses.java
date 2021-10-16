@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 
 public class Analyses {
     // Use Case Class Analyses
@@ -7,21 +6,13 @@ public class Analyses {
      * This is an Analyses class that could give some data analyses to users exercise and calorie
      * record based on the period.
      */
-    private int period; //number of days
+    private final int period; //number of days
 
     public Analyses (int period) { //constructor
         this.period = period;
     }
 
-    public int getPeriod() { //getter function for instance period
-        return this.period;
-    }
-
-    public void setPeriod(int period) { //setter function for instance period
-        this.period = period;
-    }
-
-    public int average_calorie_intake (Account user, ManageFood mf) {
+    public double average_calorie_intake (Account user) {
         /*
           This function calculate the average calories that user take in by food in certain recent period.
           e.g. recent 7 days, recent 30 days, recent 365 days
@@ -29,11 +20,9 @@ public class Analyses {
          * @return the average calorie intake in certain recent period
          */
         double count = 0;
-        for(int i = user.getFood_record().size() - 1; i >= user.getFood_record().size() - period; i--) {
-            for(String j : user.getFood_record().get(i)) {
-                count += mf.GetCalorie(j);
-            }
+        for(int i = user.getCalorie_record().size() - 1; i >= user.getCalorie_record().size() - period; i--) {
+            count += user.getCalorie_record().get(i);
         }
-        return (int) count/period;
+        return count/period;
     }
 }

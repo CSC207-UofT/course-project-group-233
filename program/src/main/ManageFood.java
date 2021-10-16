@@ -1,33 +1,30 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ManageFood {
-    HashMap<String,Food> FoodData= new HashMap<String,Food>();//store the name and corresponding food
-    HashMap<String,Double> CaloriePerGram= new HashMap<String,Double>();//store names of food and its calorie per gram
+    HashMap<String,Food> FoodData= new HashMap<>();//store the name and corresponding food
 
     public ManageFood(){
         //below is the entries of FoodData, still to be implemented
-        Food Fries= new Food("Fries", "Fast Food",  (double) 71);
+        Food Fries= new Food("Fries", "Fast Food",  (double) 71, 3.12);
         FoodData.put("Fries",Fries);
 
         ////////////////////////////////////
         ///////////////////////////////////
         //below is the entries of CaloriePerGram, still to be implemented
-        this.CaloriePerGram.put("Fries", 3.12);
 
     }
-    public Food GetFood(String name){
-        return this.FoodData.get(name);
-    }
 
-    public void update_food(String food, String kind, double weight, double calo_per_gram) {
-        Food fd = new Food(food, kind,weight);
-        this.FoodData.put(food,fd);
-        this.CaloriePerGram.put(food,calo_per_gram);
+    public void change_food_weight(String food, double weight) {
+        this.FoodData.get(food).setWeight(weight);
     }
 
     public Double GetCalorie(String fd){
-        Double CalPerGram = this.CaloriePerGram.get(fd);
+        Double CalPerGram = this.FoodData.get(fd).getCalorie_per_gram();
         return CalPerGram * FoodData.get(fd).getWeight();
     }
 
+    public ArrayList<String> food_list() {
+        return new ArrayList<>(this.FoodData.keySet());
+    }
 }

@@ -1,18 +1,17 @@
-import java.util.ArrayList;
-import java.util.Objects;
 
 public class Food {
-    private String name;
-    private String kind;
+    private final String name;
+    private final String kind;
     private Double weight;
+    private final Double calorie_per_gram;
     //ArrayList<String> KindList = new ArrayList<String>();
 
-
-    public Food(String name, String kind,Double weight){
+    public Food(String name, String kind,Double weight, Double calorie_per_gram){
 
         this.name=name;
         this.kind=kind;
         this.weight=weight;
+        this.calorie_per_gram = calorie_per_gram;
     }
 
     public String getName() {return this.name;}
@@ -21,30 +20,7 @@ public class Food {
 
     public Double getWeight() {return this.weight;}
 
-    public boolean equals(Food fd) {
-        return (Objects.equals(this.name, fd.name)) &&
-                (Objects.equals(this.kind, fd.kind)) &&
-                (Objects.equals(this.weight, fd.weight));
-    }
+    public void setWeight(Double weight) {this.weight = weight;}
 
-
-
-    //still to be implemented, don't use
-//    public  ArrayList<String> GetClosest(String word, ArrayList<String> wordlist){
-//        ArrayList<String> result = new ArrayList<String>();
-//        ArrayList<Integer> similarity = new ArrayList<Integer>();
-//        for(int i=0;i<=word.length();i++){
-//
-//        }
-//    }
-
-    //still to be implemented, don't use
-//    public String DetermineKind(){
-//        //String result;
-//        String result="";
-//        return result;
-//    }
-
-
-
+    public Double getCalorie_per_gram() {return this.calorie_per_gram;}
 }
