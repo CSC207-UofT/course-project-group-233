@@ -14,6 +14,10 @@ public class ManageFood {
         //below is the entries of CaloriePerGram, still to be implemented
 
     }
+    public void update_food(String food, String kind, double weight, double calo_per_gram) {
+           Food fd = new Food(food, kind, weight, calo_per_gram);
+           this.FoodData.put(food,fd);
+    }
 
     public void change_food_weight(String food, double weight) {
         this.FoodData.get(food).setWeight(weight);
@@ -26,5 +30,9 @@ public class ManageFood {
 
     public ArrayList<String> food_list() {
         return new ArrayList<>(this.FoodData.keySet());
+    }
+
+    public Food GetFood(String name){
+        return this.FoodData.get(name);
     }
 }

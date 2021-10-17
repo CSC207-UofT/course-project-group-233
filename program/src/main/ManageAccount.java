@@ -92,5 +92,8 @@ public class ManageAccount {
     public Account getCurrent_account() {
         return this.current_account;
     }
+    public void setCurrent_account(Account user1){
+        this.current_account = user1;
+    }
 }
 
