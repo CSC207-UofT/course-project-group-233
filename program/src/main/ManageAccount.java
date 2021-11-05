@@ -1,15 +1,19 @@
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
-
+import java.io.File;
+import java.util.Scanner;
+import java.io.FileNotFoundException;
 
 public class ManageAccount {
     /*This class will more focus on changing some account information if user need
      * */
 
     private Account current_account = null;
-    private ArrayList<Account> name;
+    private  ArrayList<Account> name;
 
-    public ManageAccount() {
-        this.name = new ArrayList<>();
+    public ManageAccount() throws FileNotFoundException, ParseException {
+        help_loading_file();
     }
 
     public String sign_up(String new_user, String word, Date birthday, String gender){
@@ -96,11 +100,36 @@ public class ManageAccount {
         this.current_account = user1;
     }
 
-    public ArrayList<Account> getName() {return  this.name;}
+    public void help_loading_file() throws FileNotFoundException, ParseException {
+        File my_file = new File("AccountData.txt");
+        Scanner reading = new Scanner(my_file);
+        while (reading.hasNextLine()) {
+            String username = reading.nextLine();
+            String password = reading.nextLine();
+            String creating = reading.nextLine();
+            String birthday = reading.nextLine();
+            String gender = reading.nextLine();
+            String login_day = reading.nextLine();
+            String food = reading.nextLine();
+            String calories = reading.nextLine();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
+            Date birth_day = dateFormat.parse(birthday);
+            Date creating_date = dateFormat.parse(creating);
 
-    public void add_Account(String password, String username, Date date, Date birthday, String gender){
-        Account new_account = new Account(password,username,date,birthday,gender);
-        this.name.add(new_account);
+            Account user = new Account(password, username, creating_date, birth_day, gender);
+            String[] str = login_day.split(",");
+            List<String> log_in_day = new ArrayList<String>();
+            log_in_day = Arrays.asList(str);
+
+            str = food.split(",");
+            List<String> food_list = new ArrayList<String>();
+            food_list = Arrays.asList(str);
+
+            str = calories.split(",");
+            List<String> calories_list = new ArrayList<String>();
+            calories_list = Arrays.asList(str);
+            reading.nextLine();
+        }
     }
 }
 
