@@ -6,7 +6,7 @@ public class ManageAccount {
      * */
 
     private Account current_account = null;
-    private final ArrayList<Account> name;
+    private ArrayList<Account> name;
 
     public ManageAccount() {
         this.name = new ArrayList<>();
@@ -94,6 +94,13 @@ public class ManageAccount {
     }
     public void setCurrent_account(Account user1){
         this.current_account = user1;
+    }
+
+    public ArrayList<Account> getName() {return  this.name;}
+
+    public void add_Account(String password, String username, Date date, Date birthday, String gender){
+        Account new_account = new Account(password,username,date,birthday,gender);
+        this.name.add(new_account);
     }
 }
 

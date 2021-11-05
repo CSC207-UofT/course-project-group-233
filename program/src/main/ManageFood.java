@@ -2,17 +2,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ManageFood {
-    HashMap<String,Food> FoodData= new HashMap<>();//store the name and corresponding food
+    HashMap<String, Food> FoodData;//store the name and corresponding food
 
     public ManageFood(){
-        //below is the entries of FoodData, still to be implemented
-        Food Fries= new Food("Fries", "Fast Food",  (double) 71, 3.12);
-        FoodData.put("Fries",Fries);
-
-        ////////////////////////////////////
-        ///////////////////////////////////
-        //below is the entries of CaloriePerGram, still to be implemented
-
+        HashMap<String, Food> food_data = new HashMap<>();
     }
     public void update_food(String food, String kind, double weight, double calo_per_gram) {
            Food fd = new Food(food, kind, weight, calo_per_gram);
