@@ -2,6 +2,7 @@
 <project version="4">
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="course-project-group-233" options="--add-modules java.desktop,java.base" />
       <module name="program" options="--add-modules java.base" />
     </option>
   </component>
