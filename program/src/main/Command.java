@@ -1,10 +1,11 @@
+import java.io.FileNotFoundException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Command {
 
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args) throws ParseException, FileNotFoundException {
         // create menu
         Menu menu = new Menu();
         // create scanner

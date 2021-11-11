@@ -1,5 +1,6 @@
 import  org.junit.jupiter.api.Test;
 
+import java.io.FileNotFoundException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -8,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Sign_upTest {
     @Test
-    public void testSign_up() throws ParseException {
+    public void testSign_up() throws ParseException, FileNotFoundException {
         ManageAccount new_account = new ManageAccount();
         String new_user = "Hello";
         String word = "Holy";

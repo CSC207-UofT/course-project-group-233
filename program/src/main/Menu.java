@@ -1,3 +1,5 @@
+import java.io.FileNotFoundException;
+import java.text.ParseException;
 import java.util.Calendar;
 
 public class Menu {
@@ -10,7 +12,7 @@ public class Menu {
     private final ManageFood mf;
     private final ManageAccount ma;
 
-    public Menu() {
+    public Menu() throws FileNotFoundException, ParseException {
         this.ma = new ManageAccount();
         this.mf = new ManageFood();
     }

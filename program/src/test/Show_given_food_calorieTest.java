@@ -1,5 +1,6 @@
 import org.junit.jupiter.api.Test;
 
+import java.io.FileNotFoundException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -8,7 +9,7 @@ import java.util.GregorianCalendar;
 
 public class Show_given_food_calorieTest {
     @Test
-    public void testShow_given_food_calorie() throws ParseException {
+    public void testShow_given_food_calorie() throws ParseException, FileNotFoundException {
         Menu mu = new Menu();
         String fd = "Fries";
         Calendar dd1 = new GregorianCalendar(2021,Calendar.NOVEMBER,16);
