@@ -36,6 +36,8 @@ public class GUI {
         //account info panel
         JPanel AccInfoPanel =new JPanel(null);
 
+        //Food Panel
+        JPanel FoodPanel= new JPanel(null);
 
 
         //sign up switch button
@@ -145,8 +147,7 @@ public class GUI {
         GoToFood.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO
-                //switchPanel();
+                switchPanel(FoodPanel);
             }
         });
         MainMenuPanel.add(GoToFood);
@@ -212,6 +213,69 @@ public class GUI {
             }
         });
         AccInfoPanel.add(BackMenuAccInfo);
+        //////////////////////////////////////////////////////////
+        //*********************************************************
+        //*********************************************************
+        //Food panel
+        JLabel FoodpanelTitle = new JLabel("Food");
+        FoodpanelTitle.setBounds(470,10,200,100);
+        FoodPanel.add(FoodpanelTitle);
+        ///////////////////////////////////////////////////////////
+        JLabel lblDate = new JLabel("Date:");
+        lblDate.setBounds(360,60,200,100);
+        FoodPanel.add(lblDate);
+        ///////////////////////////////////////////////////////////
+        JTextField DateText = new JTextField();
+        DateText.setBounds(400,100,120,20);
+        FoodPanel.add(DateText);
+        /////////////////////////////////////////////////////////
+        JButton BackMenuFood = new JButton("Menu");
+        BackMenuFood.setBounds(360,400,100,30);
+        BackMenuFood.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                switchPanel(MainMenuPanel);
+            }
+        });
+        FoodPanel.add(BackMenuFood);
+        ///////////////////////////////////////////////////////////
+        JButton AddDate = new JButton("Add");
+        AddDate.setBounds(520,100,70,20);
+        AddDate.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //TODO
+            }
+        });
+        FoodPanel.add(AddDate);
+        ///////////////////////////////////////////////////////////
+        JLabel lblFood = new JLabel("Enter Food:");
+        lblFood.setBounds(360,100,200,100);
+        FoodPanel.add(lblFood);
+        /////////////////////////////////////////////////////////////
+        JTextField FoodText = new JTextField();
+        FoodText.setBounds(450,140,120,20);
+        FoodPanel.add(FoodText);
+        ////////////////////////////////////////////////////////////
+        JButton AddFood = new JButton("Add");
+        AddFood.setBounds(580,140,70,20);
+        AddFood.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //TODO
+            }
+        });
+        FoodPanel.add(AddFood);
+        ////////////////////////////////////////////////////////////////
+        JButton SearchFood = new JButton("Search");
+        SearchFood.setBounds(660,140,90,20);
+        SearchFood.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //TODO
+            }
+        });
+        FoodPanel.add(SearchFood);
         //*********************************************************
         //*********************************************************
         frame.add(Logpanel);
