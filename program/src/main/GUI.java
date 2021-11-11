@@ -239,15 +239,15 @@ public class GUI {
         });
         FoodPanel.add(BackMenuFood);
         ///////////////////////////////////////////////////////////
-        JButton AddDate = new JButton("Add");
-        AddDate.setBounds(520,100,70,20);
-        AddDate.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //TODO
-            }
-        });
-        FoodPanel.add(AddDate);
+//        JButton AddDate = new JButton("Add");
+//        AddDate.setBounds(520,100,70,20);
+//        AddDate.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                //TODO
+//            }
+//        });
+//        FoodPanel.add(AddDate);
         ///////////////////////////////////////////////////////////
         JLabel lblFood = new JLabel("Enter Food:");
         lblFood.setBounds(360,100,200,100);
@@ -276,6 +276,24 @@ public class GUI {
             }
         });
         FoodPanel.add(SearchFood);
+        ///////////////////////////////////////////////////////////////
+        JLabel lblWeight = new JLabel("Enter Food Weight:");
+        lblWeight.setBounds(360,140,200,100);
+        FoodPanel.add(lblWeight);
+        /////////////////////////////////////////////////////////////
+        JTextField WeightText = new JTextField();
+        WeightText.setBounds(500,180,120,20);
+        FoodPanel.add(WeightText);
+        ////////////////////////////////////////////////////////////
+        JButton deleteFood = new JButton("Delete");
+        deleteFood.setBounds(760,140,90,20);
+        deleteFood.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //TODO
+            }
+        });
+        FoodPanel.add(deleteFood);
         //*********************************************************
         //*********************************************************
         frame.add(Logpanel);
