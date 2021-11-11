@@ -2,14 +2,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalTime;
 
 public class GUI {
 
-    ManageAccount AccountData = new ManageAccount();
+
     JFrame frame = new JFrame();
 
     public void switchPanel(JPanel panel){
@@ -25,20 +21,20 @@ public class GUI {
 
 
         //Login panel
-        JPanel Logpanel = new JPanel();
-        Logpanel.setBorder(BorderFactory.createEmptyBorder(30,30,10,30));
-        //Logpanel.setLayout(new GridLayout(0,1));
-
-
-
+        JPanel Logpanel = new JPanel(null);
 
 
 
         //sign up panel
-        JPanel SignPanel = new JPanel();
-        SignPanel.setBorder(BorderFactory.createEmptyBorder(30,30,50,50));
-        SignPanel.setLayout(new GridLayout(0,1));
+        JPanel SignPanel = new JPanel(null);
+        //SignPanel.setBorder(BorderFactory.createEmptyBorder(30,30,50,50));
+        //SignPanel.setLayout(new GridLayout(0,1));
 
+        //main menu panel
+        JPanel MainMenuPanel= new JPanel(null);
+
+        //account info panel
+        JPanel AccInfoPanel =new JPanel(null);
 
 
 
@@ -50,7 +46,7 @@ public class GUI {
                 switchPanel(SignPanel);
             }
         });
-        SignUpSwitch.setBounds(50,200,80,25);
+        SignUpSwitch.setBounds(10,200,150,25);
         Logpanel.add(SignUpSwitch);
         //////////////////////////////////////////////////
         //login switch button
@@ -61,11 +57,12 @@ public class GUI {
                 switchPanel(Logpanel);
             }
         });
-        LoginSwitch.setBounds(50,200,80,25);
+        LoginSwitch.setBounds(10,200,150,25);
         SignPanel.add(LoginSwitch);
         //////////////////////////////////////////
 
-
+        //*********************************************************
+        //*********************************************************
         //Sign up input
         JLabel userLabel = new JLabel("User Name");
         userLabel.setBounds(10,20,80,25);
@@ -76,35 +73,150 @@ public class GUI {
         SignPanel.add(CreateUserText);
         //////////////////////////////////////////////////
         JLabel passLabel= new JLabel("Password");
-        passLabel.setBounds(10,50,80,50);
+        passLabel.setBounds(10,100,80,50);
         SignPanel.add(passLabel);
         //////////////////////////////////////////////////
         JPasswordField CreatePassField = new JPasswordField();
         //CreatePassField.setBounds(10,200,80,60);
-        CreatePassField.setLocation(100,100);
+        CreatePassField.setBounds(10,140,80,25);
         SignPanel.add(CreatePassField);
         /////////////////////////////////////////////
-        JButton SaveAccount = new JButton("Create account");
+        JButton SaveAccount = new JButton("Register");
         SaveAccount.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String username= CreateUserText.getText();
                 String passward = CreatePassField.getText();
-                SimpleDateFormat time = new SimpleDateFormat("yyyy.MM.dd");
-                try {
-                    AccountData.add_Account(passward, username,time.parse("2020.03.06"),time.parse("2020.03.06"),"");
-                } catch (ParseException ex) {
-                    ex.printStackTrace();
-                }
+                //TODO
+            }
+        });
+        SaveAccount.setBounds(10,230,150,25);
+        SignPanel.add(SaveAccount);
+        //*********************************************************
+        //*********************************************************
+        //Login panel
+        JLabel LoguserLabel = new JLabel("User Name");
+        LoguserLabel.setBounds(10,20,80,25);
+        Logpanel.add(LoguserLabel);
+        /////////////////////////////////////////////////////
+        JLabel LogpassLabel= new JLabel("Password");
+        LogpassLabel.setBounds(10,100,80,50);
+        Logpanel.add(LogpassLabel);
+        ///////////////////////////////////////////////////
+        JTextField LogUserText= new JTextField(20);
+        LogUserText.setBounds(10,50,80,25);
+        Logpanel.add(LogUserText);
+        //////////////////////////////////////////////////////////
+        JPasswordField LogPassField = new JPasswordField();
+        LogPassField.setBounds(10,140,80,25);
+        Logpanel.add(LogPassField);
+        ////////////////////////////////////////////////////////
+        JButton LogInButton = new JButton("Login");
+        LogInButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //TODO
+                switchPanel(MainMenuPanel);
+
 
             }
         });
-        SaveAccount.setBounds(50,200,80,25);
-        SignPanel.add(SaveAccount);
-        //frame.add(Logpanel, BorderLayout.CENTER);
+        LogInButton.setBounds(10,230,150,25);
+        Logpanel.add(LogInButton);
+        //*********************************************************
+        //*********************************************************
+        //Main menu
+        JLabel MenuTitle = new JLabel("Main Menu");
+        MenuTitle.setBounds(470,10,200,100);
+        MainMenuPanel.add(MenuTitle);
+        //////////////////////////////////////////////////
+        JButton SwitchAccount = new JButton("Switch Account");
+        SwitchAccount.setBounds(300,80,400,50);
+        SwitchAccount.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                switchPanel(Logpanel);
+            }
+        });
+        MainMenuPanel.add(SwitchAccount);
+        ///////////////////////////////////////////////////////////////////
+        JButton GoToFood = new JButton("Food");
+        GoToFood.setBounds(300,160,400,50);
+        GoToFood.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //TODO
+                //switchPanel();
+            }
+        });
+        MainMenuPanel.add(GoToFood);
+        ///////////////////////////////////////////////////////////////////////
+        JButton GoToExercise = new JButton("Exercise");
+        GoToExercise.setBounds(300,240,400,50);
+        GoToExercise.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //TODO
+                //switchPanel();
+            }
+        });
+        MainMenuPanel.add(GoToExercise);
+        ////////////////////////////////////////////////////////////////////////
+        JButton GoToAccInfo = new JButton("Account Info");
+        GoToAccInfo.setBounds(300,320,400,50);
+        GoToAccInfo.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                switchPanel(AccInfoPanel);
+            }
+        });
+        MainMenuPanel.add(GoToAccInfo);
+        ///////////////////////////////////////////////////////////////////////
+        //*********************************************************
+        //*********************************************************
+        //account info panel
+        JLabel AccInfoTitle = new JLabel("Account Info");
+        AccInfoTitle.setBounds(470,10,200,100);
+        AccInfoPanel.add(AccInfoTitle);
+        /////////////////////////////////////////////////////////////////////
+        JLabel lblSetGender = new JLabel("Set Gender");
+        lblSetGender.setBounds(360,60,200,100);
+        AccInfoPanel.add(lblSetGender);
+        ///////////////////////////////////////////////////////////////////
+        JLabel lblSetBirth = new JLabel("Set Birthday");
+        lblSetBirth.setBounds(360,100,200,100);
+        AccInfoPanel.add(lblSetBirth);
+        ////////////////////////////////////////////////////////////////
+        JButton SetMale = new JButton("Male");
+        SetMale.setBounds(480,100,100,20);
+        AccInfoPanel.add(SetMale);
+        /////////////////////////////////////////////////////////////
+        JButton SetFemale = new JButton("Female");
+        SetFemale.setBounds(600,100,100,20);
+        AccInfoPanel.add(SetFemale);
+        ///////////////////////////////////////////////////////////
+        JButton SetBirth = new JButton("Set");
+        SetBirth.setBounds(610,140,100,20);
+        AccInfoPanel.add(SetBirth);
+        ///////////////////////////////////////////////////////
+        JTextField BirthText = new JTextField();
+        BirthText.setBounds(480,140,120,20);
+        AccInfoPanel.add(BirthText);
+        /////////////////////////////////////////////////////////
+        JButton BackMenuAccInfo = new JButton("Menu");
+        BackMenuAccInfo.setBounds(360,400,100,30);
+        BackMenuAccInfo.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                switchPanel(MainMenuPanel);
+            }
+        });
+        AccInfoPanel.add(BackMenuAccInfo);
+        //*********************************************************
+        //*********************************************************
         frame.add(Logpanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setTitle("Login/Sign Up");
+        frame.setTitle("AA");
         frame.setSize(1000,600);
         frame.setVisible(true);
     }
