@@ -1,3 +1,8 @@
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class Analyses {
     // Use Case Class Analyses
@@ -12,7 +17,7 @@ public class Analyses {
         this.period = period;
     }
 
-    public double average_calorie_intake (Account user) {
+    public double average_calorie_intake (Account user, ManageFood mf) throws ParseException {
         /*
           This function calculate the average calories that user take in by food in certain recent period.
           e.g. recent 7 days, recent 30 days, recent 365 days
@@ -20,8 +25,17 @@ public class Analyses {
          * @return the average calorie intake in certain recent period
          */
         double count = 0;
-        for(int i = user.getCalorie_record().size() - 1; i >= user.getCalorie_record().size() - period; i--) {
-            count += user.getCalorie_record().get(i);
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, -period);
+        DateFormat df = new SimpleDateFormat("yyyy.MM.dd");
+        for (int i = 0; i < user.getDate_record().size(); i++) {
+            Date expected = df.parse(user.getDate_record().get(i));
+            if (expected.after(cal.getTime())){
+                for (int j = 0; j < user.getFood_record().get(i).size(); j++){
+                    count += user.getWeight_record().get(i).get(j) *
+                            mf.GetCaloriePerGram(user.getFood_record().get(i).get(j));
+                }
+            }
         }
         return count/period;
     }
