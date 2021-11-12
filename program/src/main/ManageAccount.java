@@ -1,9 +1,9 @@
+import java.io.*;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.io.File;
 import java.util.Scanner;
-import java.io.FileNotFoundException;
 
 public class ManageAccount {
     /*This class will more focus on changing some account information if user need
@@ -16,7 +16,7 @@ public class ManageAccount {
         help_loading_file();
     }
 
-    public String sign_up(String new_user, String word, Date birthday, String gender, double weight){
+    public String sign_up(String new_user, String word, Date birthday, String gender, double weight) throws IOException {
         // check the list of the username, if it has been created,notice to the user change another one
         // if list of username does not contain the user's input, then just add to the list of username
         // passcode will be also set by the step above.
@@ -36,6 +36,17 @@ public class ManageAccount {
             this.name.add(new_account);
             this.current_account = new_account;
         }
+        BufferedWriter writer = new BufferedWriter(new FileWriter ("/src/main/database/AccountData",
+                true));
+        writer.append(new_user).append("\n");
+        writer.append(word).append("\n");
+        DateFormat df = new SimpleDateFormat("yyyy.MM.dd");
+        String date = df.format(Calendar.getInstance().getTime());
+        writer.append(date).append("\n");
+        String birth = df.format(birthday);
+        writer.append(birth).append("\n");
+        writer.append(gender).append("\n");
+        writer.append(Double.toString(weight)).append("\n");
         return "Account has been successfully created! Welcome!";
     }
 
