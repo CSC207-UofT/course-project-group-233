@@ -53,15 +53,15 @@ public class ManageAccount {
         if (this.current_account.getDate_record().contains(temp)) {
             int index = this.current_account.getDate_record().indexOf(temp);
             this.current_account.getFood_record().get(index).add(fd);//only add fd into inner ArrayList in food_record
-            Double temp1 = this.current_account.getCalorie_record().get(index) + mf.GetCalorie(fd);
-            this.current_account.getCalorie_record().add(temp1);
+            //Double temp1 = this.current_account.getCalorie_record().get(index) + mf.GetCalorie(fd);
+            //this.current_account.getCalorie_record().add(temp1);
         }
         else {
             ArrayList<String> fd_temp = new ArrayList<>();
             fd_temp.add(fd);
             this.current_account.getDate_record().add(temp);
             this.current_account.getFood_record().add(fd_temp);
-            this.current_account.getCalorie_record().add(mf.GetCalorie(fd));
+            //this.current_account.getCalorie_record().add(mf.GetCalorie(fd));
         }
     }
 
