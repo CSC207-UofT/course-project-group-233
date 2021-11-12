@@ -26,7 +26,8 @@ public class Show_given_food_calorieTest {
                 "Mark",
                 ac_created,
                 birth_day,
-                "male");
+                "male",
+                70);
 
 
         mu.getMa().setCurrent_account(ac);

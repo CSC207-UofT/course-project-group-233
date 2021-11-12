@@ -6,8 +6,9 @@ public class Account {
 
     private String password, username;
     private final Date date;
-    private Date birthday;
-    private String gender;
+    private final Date birthday;
+    private final String gender;
+    private double weight;
     private final ArrayList<String> date_record;
     // the setter function for date_record is inside update_food_record
     // String type of date is in "yyyy,mm,dd" type.
@@ -15,9 +16,10 @@ public class Account {
     // the setter function for food_record is inside update_food_record
     // the index of date(String type) is corresponding to the index of ArrayList of food inside food_record
     // This ArrayList contains all food eaten in date(String type)
-    private ArrayList<ArrayList<Double>> weight_record;
+    private final ArrayList<Double> calorie_record;
 
-    public Account(String password, String username, Date date, Date birthday, String gender){
+
+    public Account(String password, String username, Date date, Date birthday, String gender, double weight){
         this.password = password;
         this.username = username;
         this.date = date;
@@ -25,7 +27,12 @@ public class Account {
         this.gender = gender;
         this.date_record = new ArrayList<>();
         this.food_record = new ArrayList<>();
-        this.weight_record = new ArrayList<>();
+        this.calorie_record = new ArrayList<>();
+        this.weight = weight;
+    }
+
+    public double getWeight(){
+        return weight;
     }
 
     public String getName_for_user(){
@@ -52,6 +59,14 @@ public class Account {
         return this.date_record;
     }
 
+    public ArrayList<Double> getCalorie_record() {
+        return this.calorie_record;
+    }
+
+    public void setWeight(double weight){
+        this.weight = weight;
+    }
+
     public void setPassword(String password) {
         this.password = password;
     }
@@ -59,11 +74,5 @@ public class Account {
     public void setUsername(String username){
         this.username = username;
     }
-
-    public void setBirthday(Date birthday) {this.birthday = birthday;}
-
-    public void setGender(String gender) {this.gender = gender;}
-
-    public ArrayList<ArrayList<Double>> getWeight_record() {return this.weight_record;}
 }
 

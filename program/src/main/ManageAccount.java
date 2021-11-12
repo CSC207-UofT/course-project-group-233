@@ -16,7 +16,7 @@ public class ManageAccount {
         help_loading_file();
     }
 
-    public String sign_up(String new_user, String word, Date birthday, String gender){
+    public String sign_up(String new_user, String word, Date birthday, String gender, double weight){
         // check the list of the username, if it has been created,notice to the user change another one
         // if list of username does not contain the user's input, then just add to the list of username
         // passcode will be also set by the step above.
@@ -26,11 +26,13 @@ public class ManageAccount {
                     return "This username is created Try again!";
                 }
             }
-            Account new_account = new Account(word, new_user,Calendar.getInstance().getTime(), birthday, gender);
+            Account new_account = new Account(word, new_user,Calendar.getInstance().getTime(), birthday, gender,
+                    weight);
             this.name.add(new_account);
             this.current_account = new_account;
         }else{
-            Account new_account = new Account(word, new_user,Calendar.getInstance().getTime(), birthday, gender);
+            Account new_account = new Account(word, new_user,Calendar.getInstance().getTime(), birthday, gender,
+                    weight);
             this.name.add(new_account);
             this.current_account = new_account;
         }
@@ -109,26 +111,31 @@ public class ManageAccount {
             String creating = reading.nextLine();
             String birthday = reading.nextLine();
             String gender = reading.nextLine();
-            String login_day = reading.nextLine();
-            String food = reading.nextLine();
-            String calories = reading.nextLine();
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
-            Date birth_day = dateFormat.parse(birthday);
-            Date creating_date = dateFormat.parse(creating);
+            String weight = reading.nextLine();
 
-            Account user = new Account(password, username, creating_date, birth_day, gender);
-            String[] str = login_day.split(",");
-            List<String> log_in_day = new ArrayList<String>();
-            log_in_day = Arrays.asList(str);
+            String temp = reading.nextLine();
+            ArrayList<String> date_record = new ArrayList<>();
+            ArrayList<ArrayList<String>> food = new ArrayList<>();
+            ArrayList<ArrayList<Double>> heave = new ArrayList<>();
+            while(! temp.equals("\n")){
+              String date1 = temp;
+              SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
+              String[] str = date1.split("!");
+              String[] str2 = str[1].split(",");
 
-            str = food.split(",");
-            List<String> food_list = new ArrayList<String>();
-            food_list = Arrays.asList(str);
+              ArrayList<String> one_day_food = new ArrayList<>();
+              ArrayList<Double> one_day_weight = new ArrayList<>();
 
-            str = calories.split(",");
-            List<String> calories_list = new ArrayList<String>();
-            calories_list = Arrays.asList(str);
-            reading.nextLine();
+              for(String item : str2){
+                  String[] str3 = item.split("-");
+                  one_day_food.add(str3[0]);
+                  one_day_weight.add(Double.parseDouble(str3[1]));
+              }
+              food.add(one_day_food);
+              heave.add(one_day_weight);
+              date_record.add(str[0]);
+              temp = reading.nextLine();
+            }
         }
     }
 
