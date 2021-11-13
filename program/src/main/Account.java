@@ -16,7 +16,7 @@ public class Account {
     // the setter function for food_record is inside update_food_record
     // the index of date(String type) is corresponding to the index of ArrayList of food inside food_record
     // This ArrayList contains all food eaten in date(String type)
-    private final ArrayList<Double> calorie_record;
+    private ArrayList<ArrayList<Double>> weight_record;
 
 
     public Account(String password, String username, Date date, Date birthday, String gender, double weight){
@@ -27,7 +27,7 @@ public class Account {
         this.gender = gender;
         this.date_record = new ArrayList<>();
         this.food_record = new ArrayList<>();
-        this.calorie_record = new ArrayList<>();
+        this.weight_record = new ArrayList<>();
         this.weight = weight;
     }
 
@@ -59,9 +59,7 @@ public class Account {
         return this.date_record;
     }
 
-    public ArrayList<Double> getCalorie_record() {
-        return this.calorie_record;
-    }
+    public ArrayList<ArrayList<Double>> getWeight_record() {return this.weight_record;}
 
     public void setWeight(double weight){
         this.weight = weight;
