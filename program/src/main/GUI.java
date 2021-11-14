@@ -298,7 +298,7 @@ public class GUI {
         //*********************************************************
         frame.add(Logpanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setTitle("AA");
+        frame.setTitle("Fitness");
         frame.setSize(1000,600);
         frame.setVisible(true);
     }
