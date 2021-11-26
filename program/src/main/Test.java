@@ -1,3 +1,4 @@
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -10,6 +11,8 @@ public class Test {
                  birth,lista,listb);
 
         accounta.register();
+        //FileWriter fw = new FileWriter("AccountData.txt",true);
+        //fw.write("a");
 
 
 
