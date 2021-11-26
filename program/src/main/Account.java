@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.*;
 
 public class Account {
@@ -80,10 +81,18 @@ public class Account {
         this.username = username;
     }
 
-    public void register() throws IOException {
+    public boolean register() throws IOException {
         File text = new File("AccountData.txt");
         Scanner s = new Scanner(text);
-        FileWriter fw = new FileWriter(text,true);
+        boolean has_user=false;
+        String line;
+        while((line=s.nextLine())!=null){
+            if(line==this.username){has_user=true;}
+        }
+        //FileWriter fw = new FileWriter(text,true);
+        //PrintWriter pw = new PrintWriter(fw);
+        return has_user;
+
     }
 }
 
