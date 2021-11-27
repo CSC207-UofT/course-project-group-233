@@ -81,17 +81,30 @@ public class Account {
         this.username = username;
     }
 
-    public boolean register() throws IOException {
+    public void register() throws IOException {
         File text = new File("AccountData.txt");
-        Scanner s = new Scanner(text);
-        boolean has_user=false;
-        String line;
-        while((line=s.nextLine())!=null){
-            if(line==this.username){has_user=true;}
+        //Scanner s = new Scanner(text);
+        FileWriter fw = new FileWriter(text,true);
+        PrintWriter pw = new PrintWriter(fw);
+        //check if user already exist
+
+        ManageAccount manage= new ManageAccount();
+        boolean has_user=manage.scan_has_account(this.username);
+
+        if(has_user==false){
+
+            pw.println("\n");
+            pw.println("*user");
+            pw.println(this.username);
+            pw.println(this.password);
+
+
+            pw.close();
         }
+
         //FileWriter fw = new FileWriter(text,true);
         //PrintWriter pw = new PrintWriter(fw);
-        return has_user;
+        //return has_user;
 
     }
 }

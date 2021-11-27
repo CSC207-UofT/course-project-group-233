@@ -2,10 +2,16 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class GUI {
+    //set current account to be empty
+    ArrayList<DateAndObj> food_list = new ArrayList<DateAndObj>();
+    ArrayList<DateAndObj> exercise_list = new ArrayList<DateAndObj>();
+    ModDate birth = new ModDate(2021,1,1);
 
-
+    Account current_account= new Account("","","",0,
+                                             birth,food_list,exercise_list);
     JFrame frame = new JFrame();
 
     public void switchPanel(JPanel panel){
