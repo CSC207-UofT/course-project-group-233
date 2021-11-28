@@ -24,10 +24,5 @@ chicken
 exa
 
 *user
-exampleuser1
-a
-
-
-*user
 exampleuser2
 a

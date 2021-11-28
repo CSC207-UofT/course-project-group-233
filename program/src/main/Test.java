@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Test {
+
     public static void main(String[] args) throws IOException {
         ArrayList<DateAndObj> lista = new ArrayList<DateAndObj>();
         ArrayList<DateAndObj> listb = new ArrayList<DateAndObj>();
@@ -18,9 +19,11 @@ public class Test {
         //File text = new File("AccountData.txt");
         //Scanner s = new Scanner(text);
         //System.out.println(s.nextLine());
-        accounta.register();
-
-
+        //accounta.register();
+        //ManageAccount a=new ManageAccount();
+        //ManageAccount b=new ManageAccount();
+        //System.out.println(a.test());
+        //System.out.println(b.test());
 
 
     }

@@ -20,6 +20,19 @@ public class ManageAccount {
         }
         return has_user;
     }
+//    public int test( ) throws FileNotFoundException {
+//        File text = new File("AccountData.txt");
+//        Scanner s = new Scanner(text);
+//        int count=0;
+//        String line;
+//        while(s.hasNextLine()){
+//
+//            line=s.nextLine();
+//            count+=1;
+//
+//        }
+//        return count;
+//    }
 
 
 }
