@@ -1,9 +1,22 @@
-// not used in phase 0, so we temporarily comment all codes to avoid style warning.
-//import java.util.ArrayList;
-//import java.util.Map;
-//
-//class Exercise {
-//    // Entity class Exercise
+// Entity class Exercise
+class Exercise {
+
+    private final String name;
+    private final String calories;
+
+    Exercise(String name, String calories) {
+        this.name = name;
+        this.calories = calories;
+    }
+
+    public String getName(){
+        return this.name;
+    }
+
+    public String getCalories(){
+        return this.calories;
+    }
+
 //
 //    /**
 //     * This is an Exercise class that contain different kinds of exercises that Account could choose.
@@ -39,4 +52,4 @@
 //    public Double check_exercise_calorie (String exercise) {
 //        return this.exercise_collection.get(exercise);
 //    }
-//}
+}
