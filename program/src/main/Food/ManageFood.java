@@ -1,3 +1,4 @@
+package Food;
 //import java.io.File;
 //import java.io.FileNotFoundException;
 //import java.util.ArrayList;
@@ -5,17 +6,17 @@
 //import java.util.Scanner;
 //
 //public class ManageFood {
-//    HashMap<String, Food> FoodData;//store the name and corresponding food
+//    HashMap<String, Food.Food> FoodData;//store the name and corresponding food
 //
 //    public ManageFood() throws FileNotFoundException {
-//        HashMap<String, Food> food_data = new HashMap<>();
+//        HashMap<String, Food.Food> food_data = new HashMap<>();
 //        File file = new File("/src/main/database/FoodData.txt");
 //        Scanner scanner = new Scanner(file);
 //        while(scanner.hasNextLine()){
 //            String food_name = scanner.nextLine().strip();
 //            String food_kind = scanner.nextLine().strip();
 //            String food_calorie = scanner.nextLine().strip();
-//            Food new_food = new Food(food_name,
+//            Food.Food new_food = new Food.Food(food_name,
 //                                    food_kind,
 //                                    Double.parseDouble(food_calorie));
 //            food_data.put(food_name, new_food);
@@ -24,7 +25,7 @@
 //    }
 //
 //    public void update_food(String food, String kind, double calo_per_gram) {
-//           Food fd = new Food(food, kind, calo_per_gram);
+//           Food.Food fd = new Food.Food(food, kind, calo_per_gram);
 //           this.FoodData.put(food,fd);
 //    }
 //
@@ -36,7 +37,7 @@
 //        return new ArrayList<>(this.FoodData.keySet());
 //    }
 //
-//    public Food GetFood(String name){
+//    public Food.Food GetFood(String name){
 //        return this.FoodData.get(name);
 //    }
 //}

@@ -1,13 +1,17 @@
+import Account.Account;
+import DateAndObject.DateAndExercise;
+import DateAndObject.DateAndFood;
+import OtherObjects.ModDate;
+
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class GUI {
     //set current account to be empty
-    ArrayList<DateAndObj> food_list = new ArrayList<DateAndObj>();
-    ArrayList<DateAndObj> exercise_list = new ArrayList<DateAndObj>();
+    ArrayList<DateAndFood> food_list = new ArrayList<DateAndFood>();
+    ArrayList<DateAndExercise> exercise_list = new ArrayList<DateAndExercise>();
     ModDate birth = new ModDate(2021,1,1);
 
     Account current_account= new Account("","","",0,
@@ -42,12 +46,12 @@ public class GUI {
         //account info panel
         JPanel AccInfoPanel =new JPanel(null);
 
-        //Food Panel
+        //Food.Food Panel
         JPanel FoodPanel= new JPanel(null);
 
 
         //sign up switch button
-        JButton SignUpSwitch = new JButton("Create Account");
+        JButton SignUpSwitch = new JButton("Create Account.Account");
         SignUpSwitch.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -138,7 +142,7 @@ public class GUI {
         MenuTitle.setBounds(470,10,200,100);
         MainMenuPanel.add(MenuTitle);
         //////////////////////////////////////////////////
-        JButton SwitchAccount = new JButton("Switch Account");
+        JButton SwitchAccount = new JButton("Switch Account.Account");
         SwitchAccount.setBounds(300,80,400,50);
         SwitchAccount.addActionListener(new ActionListener() {
             @Override
@@ -169,7 +173,7 @@ public class GUI {
         });
         MainMenuPanel.add(GoToExercise);
         ////////////////////////////////////////////////////////////////////////
-        JButton GoToAccInfo = new JButton("Account Info");
+        JButton GoToAccInfo = new JButton("Account.Account Info");
         GoToAccInfo.setBounds(300,320,400,50);
         GoToAccInfo.addActionListener(new ActionListener() {
             @Override
@@ -182,7 +186,7 @@ public class GUI {
         //*********************************************************
         //*********************************************************
         //account info panel
-        JLabel AccInfoTitle = new JLabel("Account Info");
+        JLabel AccInfoTitle = new JLabel("Account.Account Info");
         AccInfoTitle.setBounds(470,10,200,100);
         AccInfoPanel.add(AccInfoTitle);
         /////////////////////////////////////////////////////////////////////
@@ -222,7 +226,7 @@ public class GUI {
         //////////////////////////////////////////////////////////
         //*********************************************************
         //*********************************************************
-        //Food panel
+        //Food.Food panel
         JLabel FoodpanelTitle = new JLabel("Food");
         FoodpanelTitle.setBounds(470,10,200,100);
         FoodPanel.add(FoodpanelTitle);
@@ -255,7 +259,7 @@ public class GUI {
 //        });
 //        FoodPanel.add(AddDate);
         ///////////////////////////////////////////////////////////
-        JLabel lblFood = new JLabel("Enter Food:");
+        JLabel lblFood = new JLabel("Enter Food.Food:");
         lblFood.setBounds(360,100,200,100);
         FoodPanel.add(lblFood);
         /////////////////////////////////////////////////////////////
@@ -283,7 +287,7 @@ public class GUI {
         });
         FoodPanel.add(SearchFood);
         ///////////////////////////////////////////////////////////////
-        JLabel lblWeight = new JLabel("Enter Food Weight:");
+        JLabel lblWeight = new JLabel("Enter Food.Food Weight:");
         lblWeight.setBounds(360,140,200,100);
         FoodPanel.add(lblWeight);
         /////////////////////////////////////////////////////////////

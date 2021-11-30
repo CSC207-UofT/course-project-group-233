@@ -1,29 +1,31 @@
-// Entity class Exercise
-class Exercise {
+package Exercise;
+
+// Entity class Exercise.Exercise
+public class Exercise {
 
     private final String name;
-    private final String calories;
+    private final int time;
 
-    Exercise(String name, String calories) {
+    Exercise(String name, int time) {
         this.name = name;
-        this.calories = calories;
+        this.time=time;
     }
 
     public String getName(){
         return this.name;
     }
 
-    public String getCalories(){
-        return this.calories;
+    public int getTime(){
+        return this.time;
     }
 
 //
 //    /**
-//     * This is an Exercise class that contain different kinds of exercises that Account could choose.
+//     * This is an Exercise.Exercise class that contain different kinds of exercises that Account.Account could choose.
 //     *
 //     * @param exercise_collection contain HashMap, with key being different kinds of exercises,
 //     *                            and value be the MET for this exercise in the calories burned formula.
-//     * @param record contain the possible consecutive exercises that Account does for one day.
+//     * @param record contain the possible consecutive exercises that Account.Account does for one day.
 //     * @param calorie_burned contain calories burned for one day.
 //     */
 //
@@ -31,7 +33,7 @@ class Exercise {
 //    private ArrayList<String> record;
 //    private double calorie_burned;
 //
-//    public Exercise (Map exercise_collection) {
+//    public Exercise.Exercise (Map exercise_collection) {
 //        this.exercise_collection = exercise_collection;
 //        this.record = new ArrayList<>();
 //        this.calorie_burned = 0;

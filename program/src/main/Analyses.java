@@ -17,7 +17,7 @@
 //        this.period = period;
 //    }
 //
-//    public double average_calorie_intake (Account user, ManageFood mf) throws ParseException {
+//    public double average_calorie_intake (Account.Account user, ManageFood mf) throws ParseException {
 //        /*
 //          This function calculate the average calories that user take in by food in certain recent period.
 //          e.g. recent 7 days, recent 30 days, recent 365 days

@@ -7,7 +7,7 @@
 //    private String recommend_sport;
 //    private double recommend_cal;
 //    private double recommend_time;
-//    private Account now_using = null;
+//    private Account.Account now_using = null;
 //
 //
 //    public ExerciseRecommendation() throws FileNotFoundException, parseException{
@@ -62,7 +62,7 @@
 //        return final_MET.get(final_string.indexOf(sport_asked));
 //    }
 //
-//    double user_weight = Account.getWeight();
+//    double user_weight = Account.Account.getWeight();
 //
 //
 //    public String recommend_sport(double cal, double time) throws FileNotFoundException {
