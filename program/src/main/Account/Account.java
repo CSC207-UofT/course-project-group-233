@@ -141,11 +141,92 @@ public class Account {
                 cur_node.setNext(next_node);
                 cur_node=next_node;
             }
+
+            //ModLinkedList InfoList = new ModLinkedList("",null);
+
+            //InfoList.setContent("*user");
+            //ModLinkedList InfoList1 = new ModLinkedList(this.username,null);
+            ModLinkedList InfoList = new ModLinkedList(this.password,null);
+            ModLinkedList InfoList1 = new ModLinkedList(this.gender,null);
+            ModLinkedList InfoList2 = new ModLinkedList(this.birthday.getYear(),null);
+            ModLinkedList InfoList3 = new ModLinkedList(this.birthday.getMonth(),null);
+            ModLinkedList InfoList4 = new ModLinkedList(this.birthday.getDay(),null);
+
+            InfoList.setNext(InfoList1);
+            InfoList1.setNext(InfoList2);
+            InfoList2.setNext(InfoList3);
+            InfoList3.setNext(InfoList4);
+            //InfoList4.setNext(InfoList5);
+            //InfoList5.setNext(InfoList6);
+
+            ModLinkedList InfoList5 = new ModLinkedList("",null);
+            InfoList4.setNext(InfoList5);
+            ModLinkedList infocur_node=InfoList5;
+            for (DateAndFood i :this.food_record){
+
+                infocur_node.setContent("*foodrec");
+                infocur_node.setNext(new ModLinkedList(i.getDate().getYear(),null));
+                infocur_node=infocur_node.getNext();
+                infocur_node.setNext(new ModLinkedList(i.getDate().getMonth(),null));
+                infocur_node=infocur_node.getNext();
+                infocur_node.setNext(new ModLinkedList(i.getDate().getDay(),null));
+                infocur_node=infocur_node.getNext();
+                infocur_node.setNext(new ModLinkedList("*foodbreak",null));
+                infocur_node=infocur_node.getNext();
+                infocur_node.setNext(new ModLinkedList(i.getFood().getName(),null));
+                infocur_node=infocur_node.getNext();
+                infocur_node.setNext(new ModLinkedList(i.getFood().getWeight(),null));
+                infocur_node=infocur_node.getNext();
+            }
+            for (DateAndExercise i :this.exercise_record){
+                infocur_node.setNext(new ModLinkedList("*exrec",null));
+                infocur_node=infocur_node.getNext();
+                infocur_node.setNext(new ModLinkedList(i.getDate().getYear(),null));
+                infocur_node=infocur_node.getNext();
+                infocur_node.setNext(new ModLinkedList(i.getDate().getMonth(),null));
+                infocur_node=infocur_node.getNext();
+                infocur_node.setNext(new ModLinkedList(i.getDate().getDay(),null));
+                infocur_node=infocur_node.getNext();
+                infocur_node.setNext(new ModLinkedList("*exbreak",null));
+                infocur_node=infocur_node.getNext();
+                infocur_node.setNext(new ModLinkedList(i.getExercise().getName(),null));
+                infocur_node=infocur_node.getNext();
+                infocur_node.setNext(new ModLinkedList(i.getExercise().getTime(),null));
+                infocur_node=infocur_node.getNext();
+
+            }
+            //infocur_node.setNext(new ModLinkedList("*userend",null));
+            ModLinkedList infolast_node=infocur_node;
+
+            //find the position of the account's username
+            cur_node=ListHead;
+            while(cur_node.getNext()!=null){
+                if(cur_node.getContent().equals(this.username)){break;}
+                else{cur_node=cur_node.getNext();}
+            }
+            //store it to be a connect point
+            ModLinkedList connect_front= cur_node;
+            while(cur_node.getNext()!=null){
+                if(cur_node.getContent().equals("*userend")){break;}
+                else{cur_node=cur_node.getNext();}
+            }
+            ModLinkedList connect_back= cur_node;//the second connect point
+
+            connect_front.setNext(InfoList);
+            infolast_node.setNext(connect_back);
+            FileWriter fw2 = new FileWriter(text);
+            PrintWriter pw2 = new PrintWriter(fw2);
+            cur_node=ListHead;
+            while(cur_node.getNext()!=null){
+                pw2.println(cur_node.getContent());
+                cur_node=cur_node.getNext();
+            }
+            pw2.close();
+
+
         }
 
-        //FileWriter fw = new FileWriter(text,true);
-        //PrintWriter pw = new PrintWriter(fw);
-        //return has_user;
+
 
     }
 }
