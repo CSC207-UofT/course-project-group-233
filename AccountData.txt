@@ -28,6 +28,7 @@ exa
 exampleuser2
 abcd
 m
+70.0
 2021
 1
 1

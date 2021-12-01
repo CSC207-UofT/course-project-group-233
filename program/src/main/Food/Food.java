@@ -1,8 +1,8 @@
 package Food;
 
 public class Food {
-    private final String name;
-    private final double weight;
+    private  String name;
+    private  double weight;
     //private final Double calorie_per_gram;
     //ArrayList<String> KindList = new ArrayList<String>();
 
@@ -21,4 +21,10 @@ public class Food {
     }
 
     //public Double getCalorie_per_gram() {return this.calorie_per_gram;}
+
+    public void setName(String name){this.name=name;}
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
 }

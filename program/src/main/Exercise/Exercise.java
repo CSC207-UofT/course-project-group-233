@@ -3,10 +3,10 @@ package Exercise;
 // Entity class Exercise.Exercise
 public class Exercise {
 
-    private final String name;
-    private final int time;
+    private  String name;
+    private  double time;
 
-    Exercise(String name, int time) {
+    public Exercise(String name, int time) {
         this.name = name;
         this.time=time;
     }
@@ -15,11 +15,19 @@ public class Exercise {
         return this.name;
     }
 
-    public int getTime(){
+    public double getTime(){
         return this.time;
     }
 
-//
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setTime(double time) {
+        this.time = time;
+    }
+
+    //
 //    /**
 //     * This is an Exercise.Exercise class that contain different kinds of exercises that Account.Account could choose.
 //     *

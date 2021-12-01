@@ -2,14 +2,12 @@ package Account;
 
 import DateAndObject.DateAndExercise;
 import DateAndObject.DateAndFood;
+import Food.Food;
 import OtherObjects.ModDate;
 import OtherObjects.ModLinkedList;
 import Exercise.*;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.*;
 
 public class Account {
@@ -51,7 +49,7 @@ public class Account {
         return weight;
     }
 
-    public String getName_for_user(){
+    public String getUsername(){
         return username;
     }
 
@@ -63,19 +61,11 @@ public class Account {
 
     public String getGender() { return gender; }
 
-//    public Date getDate() {
-//        return date;
-//    }
-//
-//    public ArrayList<ArrayList<String>> getFood_record() {
-//        return this.food_record;
-//    }
-//
-//    public ArrayList<String> getDate_record() {
-//        return this.date_record;
-//    }
-//
-//    public ArrayList<ArrayList<Double>> getWeight_record() {return this.weight_record;}
+    public ArrayList<DateAndFood> getFood_record(){return this.food_record;}
+
+    public ArrayList<DateAndExercise> getExercise_record() {
+        return exercise_record;
+    }
 
     public void setWeight(double weight){
         this.weight = weight;
@@ -87,6 +77,22 @@ public class Account {
 
     public void setUsername(String username){
         this.username = username;
+    }
+
+    public void setBirthday(ModDate birthday) {
+        this.birthday = birthday;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public void setFood_record(ArrayList<DateAndFood> food_record) {
+        this.food_record = food_record;
+    }
+
+    public void setExercise_record(ArrayList<DateAndExercise> exercise_record) {
+        this.exercise_record = exercise_record;
     }
 
     public void register() throws IOException {
@@ -148,12 +154,14 @@ public class Account {
             //ModLinkedList InfoList1 = new ModLinkedList(this.username,null);
             ModLinkedList InfoList = new ModLinkedList(this.password,null);
             ModLinkedList InfoList1 = new ModLinkedList(this.gender,null);
+            ModLinkedList InfoLista = new ModLinkedList(this.weight,null);
             ModLinkedList InfoList2 = new ModLinkedList(this.birthday.getYear(),null);
             ModLinkedList InfoList3 = new ModLinkedList(this.birthday.getMonth(),null);
             ModLinkedList InfoList4 = new ModLinkedList(this.birthday.getDay(),null);
 
             InfoList.setNext(InfoList1);
-            InfoList1.setNext(InfoList2);
+            InfoList1.setNext(InfoLista);
+            InfoLista.setNext(InfoList2);
             InfoList2.setNext(InfoList3);
             InfoList3.setNext(InfoList4);
             //InfoList4.setNext(InfoList5);
@@ -228,6 +236,73 @@ public class Account {
 
 
 
+    }
+
+    public void FillInfo() throws FileNotFoundException {
+        File text = new File("AccountData.txt");
+        Scanner s = new Scanner(text);
+        String cur_line=s.nextLine();
+        while(s.hasNextLine()){
+            if(cur_line.equals("*user")){
+                cur_line=s.nextLine();
+                if(cur_line.equals(this.username)){
+                    cur_line=s.nextLine();//now on password but dont need it. it already has it
+                    cur_line=s.nextLine();
+                    this.gender=cur_line;
+                    cur_line=s.nextLine();
+                    this.weight=Double.parseDouble(cur_line);
+                    ModDate birth=new ModDate(0,0,0);
+                    cur_line=s.nextLine();
+                    birth.setYear(Integer.parseInt(cur_line));
+                    cur_line=s.nextLine();
+                    birth.setMonth(Integer.parseInt(cur_line));
+                    cur_line=s.nextLine();
+                    birth.setDay(Integer.parseInt(cur_line));
+                    this.birthday=birth;
+                    cur_line=s.nextLine();
+                    while(s.hasNextLine()){
+                        if(cur_line.equals("*foodrec")){
+                            ModDate adate= new ModDate(0,0,0);
+                            cur_line=s.nextLine();
+                            adate.setYear(Integer.parseInt(cur_line));
+                            cur_line=s.nextLine();
+                            adate.setMonth(Integer.parseInt(cur_line));
+                            cur_line=s.nextLine();
+                            adate.setDay(Integer.parseInt(cur_line));
+                            Food afood =new Food("",0);
+                            cur_line=s.nextLine();//now at *foodbreak
+                            cur_line=s.nextLine();
+                            afood.setName(cur_line);
+                            cur_line=s.nextLine();
+                            afood.setWeight(Double.parseDouble(cur_line));
+                            this.food_record.add(new DateAndFood(adate,afood));
+                            cur_line=s.nextLine();
+                        }
+                        else if (cur_line.equals("*exerciserec")){
+                            ModDate bdate= new ModDate(0,0,0);
+                            cur_line=s.nextLine();
+                            bdate.setYear(Integer.parseInt(cur_line));
+                            cur_line=s.nextLine();
+                            bdate.setMonth(Integer.parseInt(cur_line));
+                            cur_line=s.nextLine();
+                            bdate.setDay(Integer.parseInt(cur_line));
+                            Exercise bex =new Exercise("",0);
+                            cur_line=s.nextLine();//at *exbreak
+                            cur_line=s.nextLine();
+                            bex.setName(cur_line);
+                            cur_line=s.nextLine();
+                            bex.setTime(Double.parseDouble(cur_line));
+                            this.exercise_record.add(new DateAndExercise(bdate,bex));
+                            cur_line=s.nextLine();
+                        }
+                        else{break;}
+                    }
+
+                }
+                else{if(s.hasNextLine()){cur_line=s.nextLine();}else{break;}}
+            }
+            else{if(s.hasNextLine()){cur_line=s.nextLine();}else{break;}}
+        }
     }
 }
 
