@@ -1,3 +1,6 @@
+This file store exercises and their MET
+
+
 Handball
 7.5
 

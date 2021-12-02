@@ -13,12 +13,12 @@ Please enter your birthday in format of yyyy.MM.dd:
 2010.01.01
 Please enter your gender:
 male
-Account has been successfully created! Welcome!
+Account.Account has been successfully created! Welcome!
 There are three options for you to choose.
-Type Account if you want to check/update your account information.
-Type Food if you want to record the food you eat.
-Type Exercise if you want to start exercising timer/record exercise you did.
-Food
+Type Account.Account if you want to check/update your account information.
+Type Food.Food if you want to record the food you eat.
+Type Exercise.Exercise if you want to start exercising timer/record exercise you did.
+Food.Food
 Please type your choice of food from the following: Fries,
 Fries
 Please type the number of grams of chosen food you take in:
@@ -26,9 +26,9 @@ Please type the number of grams of chosen food you take in:
 Please type the date you take in chosen food (in format of yyyy.MM.dd):
 2021.10.14
 The calorie of Fries is about 624.0
-If you want to go to other options, type Account/Food/Exercise.
+If you want to go to other options, type Account.Account/Food.Food/Exercise.Exercise.
 If you want to leave, type Leave.
-Food
+Food.Food
 Please type your choice of food from the following: Fries,
 Fries
 Please type the number of grams of chosen food you take in:
@@ -36,9 +36,9 @@ Please type the number of grams of chosen food you take in:
 Please type the date you take in chosen food (in format of yyyy.MM.dd):
 2021.10.15
 The calorie of Fries is about 312.0
-If you want to go to other options, type Account/Food/Exercise.
+If you want to go to other options, type Account.Account/Food.Food/Exercise.Exercise.
 If you want to leave, type Leave.
-Food
+Food.Food
 Please type your choice of food from the following: Fries,
 Fries
 Please type the number of grams of chosen food you take in:
@@ -46,9 +46,9 @@ Please type the number of grams of chosen food you take in:
 Please type the date you take in chosen food (in format of yyyy.MM.dd):
 2021.10.16
 The calorie of Fries is about 156.0
-If you want to go to other options, type Account/Food/Exercise.
+If you want to go to other options, type Account.Account/Food.Food/Exercise.Exercise.
 If you want to leave, type Leave.
-Account
+Account.Account
 If you want to change password, type change_password.
 If you want to change username, type change_username.
 If you want to get analyses about your recent intake, type analyze_food.
@@ -56,7 +56,7 @@ analyze_food
 Please enter the number of recent days you want to analyze:
 3
 The average calorie intake in recent 3 days is 364.0
-If you want to go to other options, type Account/Food/Exercise.
+If you want to go to other options, type Account.Account/Food.Food/Exercise.Exercise.
 If you want to leave, type Leave.
 Leave
 Thank you for using our fitness app. Hope to see you next time!

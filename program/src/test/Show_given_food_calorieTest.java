@@ -1,4 +1,4 @@
-//import org.junit.jupiter.api.Test;
+//import org.junit.jupiter.api.Test.Test;
 //
 //import java.io.FileNotFoundException;
 //import java.text.ParseException;
@@ -8,7 +8,7 @@
 //import java.util.GregorianCalendar;
 //
 //public class Show_given_food_calorieTest {
-//    @Test
+//    @Test.Test
 //    public void testShow_given_food_calorie() throws ParseException, FileNotFoundException {
 //        Menu mu = new Menu();
 //        String fd = "Fries";
@@ -22,7 +22,7 @@
 //        String birthday = "2010.01.01";
 //        Date birth_day = dateFormat.parse(birthday);
 //        Date ac_created = dateFormat.parse(account_created);
-//        Account ac = new Account("123456",
+//        Account.Account ac = new Account.Account("123456",
 //                "Mark",
 //                ac_created,
 //                birth_day,

@@ -32,7 +32,7 @@
 //            }
 //        }
 //        else { //sign up
-//            while (!Objects.equals(result, "Account has been successfully created! Welcome!")) {
+//            while (!Objects.equals(result, "Account.Account has been successfully created! Welcome!")) {
 //                System.out.println("Please enter your username: ");
 //                String username = scanner.nextLine();
 //                System.out.println("Please enter your password: ");
@@ -48,18 +48,18 @@
 //        }
 //        // log in part finished
 //        System.out.println("There are three options for you to choose. \n" +
-//                "Type Account if you want to check/update your account information. \n" +
-//                "Type Food if you want to record the food you eat. \n" +
-//                "Type Exercise if you want to start exercising timer/record exercise you did.");
+//                "Type Account.Account if you want to check/update your account information. \n" +
+//                "Type Food.Food if you want to record the food you eat. \n" +
+//                "Type Exercise.Exercise if you want to start exercising timer/record exercise you did.");
 //        // exercise not implemented
 //        String type_choice = scanner.nextLine();
-//        while (!type_choice.equals("Account") && !type_choice.equals("Food") && !type_choice.equals("Exercise")) {
+//        while (!type_choice.equals("Account.Account") && !type_choice.equals("Food.Food") && !type_choice.equals("Exercise.Exercise")) {
 //            System.out.println("Your type is invalid. Please try again.");
 //            type_choice = scanner.nextLine();
 //        }
 //        while (!type_choice.equals("Leave")){
 //            switch (type_choice) {
-//                case "Account":
+//                case "Account.Account":
 //                    System.out.println("If you want to change password, type change_password. \n" +
 //                            "If you want to change username, type change_username. \n" +
 //                            "If you want to get analyses about your recent intake, type analyze_food.");
@@ -90,7 +90,7 @@
 //                            break;
 //                    }
 //                    break;
-//                case "Food":
+//                case "Food.Food":
 //                    ArrayList<String> total_fd_choice = menu.getMf().food_list();
 //                    StringBuilder temp = new StringBuilder();
 //                    for (String i : total_fd_choice) {
@@ -107,10 +107,10 @@
 //                    cal.setTime(take_in);
 //                    menu.show_given_food_calorie(fd_choice, cal, Double.parseDouble(fd_weight));
 //                    break;
-//                case "Exercise": //not implemented
+//                case "Exercise.Exercise": //not implemented
 //                    break;
 //            }
-//            System.out.println("If you want to go to other options, type Account/Food/Exercise. \n" +
+//            System.out.println("If you want to go to other options, type Account.Account/Food.Food/Exercise.Exercise. \n" +
 //                    "If you want to leave, type Leave.");
 //            type_choice = scanner.nextLine();
 //        }
