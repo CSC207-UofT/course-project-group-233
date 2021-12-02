@@ -1,21 +1,22 @@
-import Account.Account;
+import Account.*;
 import DateAndObject.DateAndExercise;
 import DateAndObject.DateAndFood;
 import OtherObjects.ModDate;
+import static javax.swing.JOptionPane.showMessageDialog;
+
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class GUI {
     //set current account to be empty
-    ArrayList<DateAndFood> food_list = new ArrayList<DateAndFood>();
-    ArrayList<DateAndExercise> exercise_list = new ArrayList<DateAndExercise>();
-    ModDate birth = new ModDate(2021,1,1);
+    ManageAccount accman= new ManageAccount();
 
-    Account current_account= new Account("","","",0,
-                                             birth,food_list,exercise_list);
+    Account current_account= accman.creatEmptyAcc();
     JFrame frame = new JFrame();
 
     public void switchPanel(JPanel panel){
@@ -51,7 +52,7 @@ public class GUI {
 
 
         //sign up switch button
-        JButton SignUpSwitch = new JButton("Create Account.Account");
+        JButton SignUpSwitch = new JButton("Create Account");
         SignUpSwitch.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -69,7 +70,7 @@ public class GUI {
                 switchPanel(Logpanel);
             }
         });
-        LoginSwitch.setBounds(10,200,150,25);
+        LoginSwitch.setBounds(10,200,200,25);
         SignPanel.add(LoginSwitch);
         //////////////////////////////////////////
 
@@ -81,7 +82,7 @@ public class GUI {
         SignPanel.add(userLabel);
         /////////////////////////////////////////////
         JTextField CreateUserText= new JTextField(20);
-        CreateUserText.setBounds(10,50,80,25);
+        CreateUserText.setBounds(10,50,100,25);
         SignPanel.add(CreateUserText);
         //////////////////////////////////////////////////
         JLabel passLabel= new JLabel("Password");
@@ -90,7 +91,7 @@ public class GUI {
         //////////////////////////////////////////////////
         JPasswordField CreatePassField = new JPasswordField();
         //CreatePassField.setBounds(10,200,80,60);
-        CreatePassField.setBounds(10,140,80,25);
+        CreatePassField.setBounds(10,140,100,25);
         SignPanel.add(CreatePassField);
         /////////////////////////////////////////////
         JButton SaveAccount = new JButton("Register");
@@ -99,7 +100,21 @@ public class GUI {
             public void actionPerformed(ActionEvent e) {
                 String username= CreateUserText.getText();
                 String passward = CreatePassField.getText();
-                //TODO
+
+                try {
+                    if (accman.scan_has_account(username)){
+                        showMessageDialog(null,"User already exists!");}
+                    else{
+                        //current_account=accman.creatEmptyAcc();
+                        current_account.setUsername(username);
+                        current_account.setPassword(passward);
+                        current_account.register();
+                        showMessageDialog(null,"Success!");
+                        switchPanel(MainMenuPanel);
+                    }
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
             }
         });
         SaveAccount.setBounds(10,230,150,25);
@@ -116,19 +131,34 @@ public class GUI {
         Logpanel.add(LogpassLabel);
         ///////////////////////////////////////////////////
         JTextField LogUserText= new JTextField(20);
-        LogUserText.setBounds(10,50,80,25);
+        LogUserText.setBounds(10,50,100,25);
         Logpanel.add(LogUserText);
         //////////////////////////////////////////////////////////
         JPasswordField LogPassField = new JPasswordField();
-        LogPassField.setBounds(10,140,80,25);
+        LogPassField.setBounds(10,140,100,25);
         Logpanel.add(LogPassField);
         ////////////////////////////////////////////////////////
         JButton LogInButton = new JButton("Login");
         LogInButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO
-                switchPanel(MainMenuPanel);
+                String user=LogUserText.getText();
+                String pass =LogPassField.getText();
+                try {
+                    if(accman.login(user,pass)){
+                        current_account.setUsername(user);
+                        current_account.setPassword(pass);
+                        current_account.FillInfo();
+                        showMessageDialog(null,"Success!");
+                        switchPanel(MainMenuPanel);
+                    }
+                    else{
+                        showMessageDialog(null,"Wrong username or password.");
+                    }
+                } catch (FileNotFoundException ex) {
+                    ex.printStackTrace();
+                }
+
 
 
             }
@@ -142,11 +172,13 @@ public class GUI {
         MenuTitle.setBounds(470,10,200,100);
         MainMenuPanel.add(MenuTitle);
         //////////////////////////////////////////////////
-        JButton SwitchAccount = new JButton("Switch Account.Account");
+        JButton SwitchAccount = new JButton("Switch Account");
         SwitchAccount.setBounds(300,80,400,50);
         SwitchAccount.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                //set current account to empty
+                current_account=accman.creatEmptyAcc();
                 switchPanel(Logpanel);
             }
         });
@@ -173,7 +205,7 @@ public class GUI {
         });
         MainMenuPanel.add(GoToExercise);
         ////////////////////////////////////////////////////////////////////////
-        JButton GoToAccInfo = new JButton("Account.Account Info");
+        JButton GoToAccInfo = new JButton("Account Info");
         GoToAccInfo.setBounds(300,320,400,50);
         GoToAccInfo.addActionListener(new ActionListener() {
             @Override
@@ -183,10 +215,30 @@ public class GUI {
         });
         MainMenuPanel.add(GoToAccInfo);
         ///////////////////////////////////////////////////////////////////////
+        JButton SaveButton = new JButton("Save");
+        SaveButton.setBounds(300,400,400,50);
+        SaveButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    current_account.register();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+        MainMenuPanel.add(SaveButton);
+        ///////////////////////////////////////////////////////////////////////
+        JTextArea Savewarning = new JTextArea("""
+                Warning: Always save before\s
+                you close the application.\s
+                Anything unsaved will be lost.""");
+        Savewarning.setBounds(750,400,200,55);
+        MainMenuPanel.add(Savewarning);
         //*********************************************************
         //*********************************************************
         //account info panel
-        JLabel AccInfoTitle = new JLabel("Account.Account Info");
+        JLabel AccInfoTitle = new JLabel("Account Info");
         AccInfoTitle.setBounds(470,10,200,100);
         AccInfoPanel.add(AccInfoTitle);
         /////////////////////////////////////////////////////////////////////
@@ -194,25 +246,84 @@ public class GUI {
         lblSetGender.setBounds(360,60,200,100);
         AccInfoPanel.add(lblSetGender);
         ///////////////////////////////////////////////////////////////////
-        JLabel lblSetBirth = new JLabel("Set Birthday");
+        JLabel lblSetBirth = new JLabel("Set Birthday(year/month/day)");
         lblSetBirth.setBounds(360,100,200,100);
         AccInfoPanel.add(lblSetBirth);
         ////////////////////////////////////////////////////////////////
+        JLabel lblSetWeight = new JLabel("Set Weight");
+        lblSetWeight.setBounds(360,140,200,100);
+        AccInfoPanel.add(lblSetWeight);
+        ////////////////////////////////////////////////////////////////
         JButton SetMale = new JButton("Male");
         SetMale.setBounds(480,100,100,20);
+        SetMale.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                current_account.setGender("m");
+            }
+        });
         AccInfoPanel.add(SetMale);
         /////////////////////////////////////////////////////////////
         JButton SetFemale = new JButton("Female");
         SetFemale.setBounds(600,100,100,20);
+        SetFemale.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                current_account.setGender("f");
+            }
+        });
         AccInfoPanel.add(SetFemale);
         ///////////////////////////////////////////////////////////
-        JButton SetBirth = new JButton("Set");
-        SetBirth.setBounds(610,140,100,20);
-        AccInfoPanel.add(SetBirth);
+        JTextField byearText = new JTextField();
+        byearText.setBounds(540,140,60,20);
+        AccInfoPanel.add(byearText);
         ///////////////////////////////////////////////////////
-        JTextField BirthText = new JTextField();
-        BirthText.setBounds(480,140,120,20);
-        AccInfoPanel.add(BirthText);
+        JTextField bmonthText = new JTextField();
+        bmonthText.setBounds(605,140,60,20);
+        AccInfoPanel.add(bmonthText);
+        ///////////////////////////////////////////////////////
+        JTextField bdayText = new JTextField();
+        bdayText.setBounds(670,140,60,20);
+        AccInfoPanel.add(bdayText);
+        ///////////////////////////////////////////////////////
+        JButton SetBirth = new JButton("Set");
+        SetBirth.setBounds(735,140,100,20);
+        SetBirth.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(accman.isInt(byearText.getText())&accman.isInt(bmonthText.getText())
+                &accman.isInt(bdayText.getText())){
+                    ModDate birth = new ModDate(Integer.parseInt(byearText.getText()),
+                            Integer.parseInt(bmonthText.getText()),
+                            Integer.parseInt(bdayText.getText()));
+                    current_account.setBirthday(birth);
+                    showMessageDialog(null,"Success!");
+                }
+                else{showMessageDialog(null,"Input must be integers.");}
+
+            }
+        });
+        AccInfoPanel.add(SetBirth);
+        /////////////////////////////////////////////////////////
+        JTextField weightText = new JTextField();
+        weightText.setBounds(440,180,90,20);
+        AccInfoPanel.add(weightText);
+        /////////////////////////////////////////////////////////
+        JButton SetWeight = new JButton("Set");
+        SetWeight.setBounds(535,180,100,20);
+        SetWeight.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(accman.isDouble(weightText.getText())){
+
+                    current_account.setWeight(Double.parseDouble(weightText.getText()));
+                    showMessageDialog(null,"Success!");
+                }
+                else{showMessageDialog(null,"Input must be a double.");}
+
+            }
+        });
+        AccInfoPanel.add(SetWeight);
         /////////////////////////////////////////////////////////
         JButton BackMenuAccInfo = new JButton("Menu");
         BackMenuAccInfo.setBounds(360,400,100,30);
@@ -259,7 +370,7 @@ public class GUI {
 //        });
 //        FoodPanel.add(AddDate);
         ///////////////////////////////////////////////////////////
-        JLabel lblFood = new JLabel("Enter Food.Food:");
+        JLabel lblFood = new JLabel("Enter Food:");
         lblFood.setBounds(360,100,200,100);
         FoodPanel.add(lblFood);
         /////////////////////////////////////////////////////////////
@@ -287,7 +398,7 @@ public class GUI {
         });
         FoodPanel.add(SearchFood);
         ///////////////////////////////////////////////////////////////
-        JLabel lblWeight = new JLabel("Enter Food.Food Weight:");
+        JLabel lblWeight = new JLabel("Enter Food Weight:");
         lblWeight.setBounds(360,140,200,100);
         FoodPanel.add(lblWeight);
         /////////////////////////////////////////////////////////////

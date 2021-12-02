@@ -1,7 +1,7 @@
 *user
 exampleuser
 yesyesyes
-male
+m
 70.0
 1999
 09
@@ -41,5 +41,14 @@ beef
 9.0
 *userend
 
+
 *user
-example3
+test1
+1234
+m
+20.123
+2021
+12
+12
+
+*userend

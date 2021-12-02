@@ -109,6 +109,7 @@ public class Account {
             pw.println(this.username);
             pw.println(this.password);
             pw.println(this.gender);
+            pw.println(this.weight);
             pw.println(this.birthday.getYear());
             pw.println(this.birthday.getMonth());
             pw.println(this.birthday.getDay());
