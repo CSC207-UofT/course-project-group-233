@@ -34,4 +34,8 @@ public class ModDate {
     public void setYear(int year) {
         this.year = year;
     }
+
+    public boolean isEqual(ModDate date){
+        return (this.year==date.year&this.month==date.month&this.day==date.day);
+    }
 }

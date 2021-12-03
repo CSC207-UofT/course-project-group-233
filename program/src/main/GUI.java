@@ -50,6 +50,9 @@ public class GUI {
         //Food.Food Panel
         JPanel FoodPanel= new JPanel(null);
 
+        //exercise panel
+        JPanel exPanel= new JPanel(null);
+
 
         //sign up switch button
         JButton SignUpSwitch = new JButton("Create Account");
@@ -199,8 +202,8 @@ public class GUI {
         GoToExercise.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO
-                //switchPanel();
+
+                switchPanel(exPanel);
             }
         });
         MainMenuPanel.add(GoToExercise);
@@ -346,9 +349,17 @@ public class GUI {
         lblDate.setBounds(360,60,200,100);
         FoodPanel.add(lblDate);
         ///////////////////////////////////////////////////////////
-        JTextField DateText = new JTextField();
-        DateText.setBounds(400,100,120,20);
-        FoodPanel.add(DateText);
+        JTextField foodyText = new JTextField();
+        foodyText.setBounds(400,100,60,20);
+        FoodPanel.add(foodyText);
+        /////////////////////////////////////////////////////////
+        JTextField foodmText = new JTextField();
+        foodmText.setBounds(465,100,60,20);
+        FoodPanel.add(foodmText);
+        /////////////////////////////////////////////////////////
+        JTextField fooddText = new JTextField();
+        fooddText.setBounds(525,100,60,20);
+        FoodPanel.add(fooddText);
         /////////////////////////////////////////////////////////
         JButton BackMenuFood = new JButton("Menu");
         BackMenuFood.setBounds(360,400,100,30);
@@ -415,6 +426,85 @@ public class GUI {
             }
         });
         FoodPanel.add(deleteFood);
+        //*********************************************************
+        //*********************************************************
+        //exercise panel
+        JLabel expanelTitle = new JLabel("Exercise");
+        expanelTitle.setBounds(470,10,200,100);
+        exPanel.add(expanelTitle);
+        ///////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////
+        JLabel lblexDate = new JLabel("Date:");
+        lblexDate.setBounds(360,60,200,100);
+        exPanel.add(lblexDate);
+        ///////////////////////////////////////////////////////////
+        JTextField exyText = new JTextField();
+        exyText.setBounds(400,100,60,20);
+        exPanel.add(exyText);
+        /////////////////////////////////////////////////////////
+        JTextField exmText = new JTextField();
+        exmText.setBounds(465,100,60,20);
+        exPanel.add(exmText);
+        /////////////////////////////////////////////////////////
+        JTextField exdText = new JTextField();
+        exdText.setBounds(525,100,60,20);
+        exPanel.add(exdText);
+        /////////////////////////////////////////////////////////
+        JButton BackMenuex = new JButton("Menu");
+        BackMenuex.setBounds(360,400,100,30);
+        BackMenuex.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                switchPanel(MainMenuPanel);
+            }
+        });
+        exPanel.add(BackMenuex);
+        /////////////////////////////////////////////////////////
+        JLabel lblex = new JLabel("Enter Exercise:");
+        lblex.setBounds(360,100,200,100);
+        exPanel.add(lblex);
+        /////////////////////////////////////////////////////////////
+        JTextField exerciseText = new JTextField();
+        exerciseText.setBounds(455,140,120,20);
+        exPanel.add(exerciseText);
+        ////////////////////////////////////////////////////////////
+        JButton Addex = new JButton("Add");
+        Addex.setBounds(580,140,70,20);
+        Addex.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //TODO
+            }
+        });
+        exPanel.add(Addex);
+        ////////////////////////////////////////////////////////////////
+        JButton Searchex = new JButton("Search");
+        Searchex.setBounds(660,140,90,20);
+        Searchex.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //TODO
+            }
+        });
+        exPanel.add(Searchex);
+        ///////////////////////////////////////////////////////////////
+        JLabel exlblWeight = new JLabel("Exercise Duration:");
+        exlblWeight.setBounds(360,140,200,100);
+        exPanel.add(exlblWeight);
+        /////////////////////////////////////////////////////////////
+        JTextField exWeightText = new JTextField();
+        exWeightText.setBounds(500,180,120,20);
+        exPanel.add(exWeightText);
+        ////////////////////////////////////////////////////////////
+        JButton deleteex = new JButton("Delete");
+        deleteex.setBounds(760,140,90,20);
+        deleteex.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //TODO
+            }
+        });
+        exPanel.add(deleteex);
         //*********************************************************
         //*********************************************************
         frame.add(Logpanel);
