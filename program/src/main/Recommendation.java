@@ -103,37 +103,38 @@ public class Recommendation {
     }
 
 
-    public String recom_food(String gender, int age, double weight){
+    public ArrayList <String> recom_food(String gender, int age, double weight){
+        ArrayList <String> recomd = new ArrayList <String> ();
         if (age < 5 ) {
-            ArrayList <String> recomd = new ArrayList <String> ();
+
             recomd.add("Milk");
             recomd.add("Blueberry");
-            return recomd;
+
         }
-        if ((5 < age) && (age <15)) {
+        else if ((5 < age) && (age <15)) {
             if(weight < 35.0){
-                ArrayList <String> recomd = new ArrayList <String> ();
+
                 recomd.add("Milk");
                 recomd.add("Blueberry");
                 recomd.add("Beef");
                 recomd.add("eggs");
                 recomd.add("shrimp");
                 recomd.add("snacks");
-                return recomd;
+
             }
             else{
-                ArrayList <String> recomd = new ArrayList <String> ();
+
                 recomd.add("Milk");
                 recomd.add("Blueberry");
                 recomd.add("Beef");
                 recomd.add("eggs");
                 recomd.add("shrimp");
-                return recomd;
+
             }
         }
-        if ((15 < age) && (age <30)) {
+        else if ((15 < age) && (age <30)) {
             if(weight < 60.0){
-                ArrayList <String> recomd = new ArrayList <String> ();
+
                 recomd.add("Milk");
                 recomd.add("Blueberry");
                 recomd.add("Beef");
@@ -142,21 +143,21 @@ public class Recommendation {
                 recomd.add("Eggplant");
                 recomd.add("Asparagus");
                 recomd.add("snacks");
-                return recomd;
+
             }
             else{
-                ArrayList <String> recomd = new ArrayList <String> ();
+
                 recomd.add("Milk");
                 recomd.add("Blueberry");
                 recomd.add("Beef");
                 recomd.add("eggs");
                 recomd.add("shrimp");
-                return recomd;
+
             }
         }
-        if ((30 < age) && (age < 50)) {
+        else if ((30 < age) && (age < 50)) {
             if(weight < 65.0){
-                ArrayList <String> recomd = new ArrayList <String> ();
+
                 recomd.add("Milk");
                 recomd.add("Blueberry");
                 recomd.add("eggs");
@@ -164,10 +165,10 @@ public class Recommendation {
                 recomd.add("Eggplant");
                 recomd.add("Asparagus");
                 recomd.add("Red dates");
-                return recomd;
+
             }
             else{
-                ArrayList <String> recomd = new ArrayList <String> ();
+
                 recomd.add("Milk");
                 recomd.add("Blueberry");
                 recomd.add("Beef");
@@ -176,12 +177,12 @@ public class Recommendation {
                 recomd.add("Honey");
                 recomd.add("Kelp");
                 recomd.add("Mushrooms");
-                return recomd;
+
             }
         }
-        if ((50 < age){
+        else if ((50 < age)){
             if(weight < 65.0){
-                ArrayList <String> recomd = new ArrayList <String> ();
+
                 recomd.add("Milk");
                 recomd.add("Blueberry");
                 recomd.add("Eggs");
@@ -190,10 +191,10 @@ public class Recommendation {
                 recomd.add("Apple");
                 recomd.add("Nuts");
                 recomd.add("Vitamin");
-                return recomd;
+
             }
             else{
-                ArrayList <String> recomd = new ArrayList <String> ();
+
                 recomd.add("Milk");
                 recomd.add("Blueberry");
                 recomd.add("Beef");
@@ -202,8 +203,8 @@ public class Recommendation {
                 recomd.add("Honey");
                 recomd.add("Vitamin");
                 recomd.add("Mushrooms");
-                return recomd;
+
             }
-        }
+        }return recomd;
     }
 }

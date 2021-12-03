@@ -27,4 +27,8 @@ public class Food {
     public void setWeight(double weight) {
         this.weight = weight;
     }
+
+    public boolean isEqual(Food f){
+        return (this.name.equals(f.name)&this.weight==f.weight);
+    }
 }

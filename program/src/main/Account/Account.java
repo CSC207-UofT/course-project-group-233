@@ -186,6 +186,8 @@ public class Account {
                 infocur_node=infocur_node.getNext();
                 infocur_node.setNext(new ModLinkedList(i.getFood().getWeight(),null));
                 infocur_node=infocur_node.getNext();
+                infocur_node.setNext(new ModLinkedList("",null));
+                infocur_node=infocur_node.getNext();
             }
             for (DateAndExercise i :this.exercise_record){
                 infocur_node.setNext(new ModLinkedList("*exrec",null));
@@ -201,6 +203,8 @@ public class Account {
                 infocur_node.setNext(new ModLinkedList(i.getExercise().getName(),null));
                 infocur_node=infocur_node.getNext();
                 infocur_node.setNext(new ModLinkedList(i.getExercise().getTime(),null));
+                infocur_node=infocur_node.getNext();
+                infocur_node.setNext(new ModLinkedList("",null));
                 infocur_node=infocur_node.getNext();
 
             }
@@ -279,7 +283,7 @@ public class Account {
                             this.food_record.add(new DateAndFood(adate,afood));
                             cur_line=s.nextLine();
                         }
-                        else if (cur_line.equals("*exerciserec")){
+                        else if (cur_line.equals("*exrec")){
                             ModDate bdate= new ModDate(0,0,0);
                             cur_line=s.nextLine();
                             bdate.setYear(Integer.parseInt(cur_line));
@@ -296,7 +300,7 @@ public class Account {
                             this.exercise_record.add(new DateAndExercise(bdate,bex));
                             cur_line=s.nextLine();
                         }
-                        else{break;}
+                        else{if(s.hasNextLine()){cur_line=s.nextLine();}else{break;}}
                     }
 
                 }

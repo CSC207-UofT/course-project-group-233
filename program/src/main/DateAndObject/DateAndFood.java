@@ -12,4 +12,8 @@ public class DateAndFood extends DateAndObj{
 
     public Food getFood(){return (Food) this.getObject();}
 
+    public boolean isEqual(DateAndFood df){
+        return (this.getDate().isEqual(df.getDate())&this.getFood().isEqual(df.getFood()));
+    }
+
 }

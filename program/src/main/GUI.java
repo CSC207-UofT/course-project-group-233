@@ -1,6 +1,9 @@
 import Account.*;
 import DateAndObject.DateAndExercise;
 import DateAndObject.DateAndFood;
+import Exercise.*;
+import Food.Food;
+import Food.ManageFood;
 import OtherObjects.ModDate;
 import static javax.swing.JOptionPane.showMessageDialog;
 
@@ -15,6 +18,8 @@ import java.util.ArrayList;
 public class GUI {
     //set current account to be empty
     ManageAccount accman= new ManageAccount();
+    ManageFood foodman= new ManageFood();
+    ManageExercise exman = new ManageExercise();
 
     Account current_account= accman.creatEmptyAcc();
     JFrame frame = new JFrame();
@@ -253,7 +258,7 @@ public class GUI {
         lblSetBirth.setBounds(360,100,200,100);
         AccInfoPanel.add(lblSetBirth);
         ////////////////////////////////////////////////////////////////
-        JLabel lblSetWeight = new JLabel("Set Weight");
+        JLabel lblSetWeight = new JLabel("Set Weight(kg)");
         lblSetWeight.setBounds(360,140,200,100);
         AccInfoPanel.add(lblSetWeight);
         ////////////////////////////////////////////////////////////////
@@ -309,7 +314,7 @@ public class GUI {
         AccInfoPanel.add(SetBirth);
         /////////////////////////////////////////////////////////
         JTextField weightText = new JTextField();
-        weightText.setBounds(440,180,90,20);
+        weightText.setBounds(450,180,90,20);
         AccInfoPanel.add(weightText);
         /////////////////////////////////////////////////////////
         JButton SetWeight = new JButton("Set");
@@ -345,20 +350,20 @@ public class GUI {
         FoodpanelTitle.setBounds(470,10,200,100);
         FoodPanel.add(FoodpanelTitle);
         ///////////////////////////////////////////////////////////
-        JLabel lblDate = new JLabel("Date:");
+        JLabel lblDate = new JLabel("Date(y/m/d):");
         lblDate.setBounds(360,60,200,100);
         FoodPanel.add(lblDate);
         ///////////////////////////////////////////////////////////
         JTextField foodyText = new JTextField();
-        foodyText.setBounds(400,100,60,20);
+        foodyText.setBounds(450,100,60,20);
         FoodPanel.add(foodyText);
         /////////////////////////////////////////////////////////
         JTextField foodmText = new JTextField();
-        foodmText.setBounds(465,100,60,20);
+        foodmText.setBounds(515,100,60,20);
         FoodPanel.add(foodmText);
         /////////////////////////////////////////////////////////
         JTextField fooddText = new JTextField();
-        fooddText.setBounds(525,100,60,20);
+        fooddText.setBounds(575,100,60,20);
         FoodPanel.add(fooddText);
         /////////////////////////////////////////////////////////
         JButton BackMenuFood = new JButton("Menu");
@@ -376,7 +381,7 @@ public class GUI {
 //        AddDate.addActionListener(new ActionListener() {
 //            @Override
 //            public void actionPerformed(ActionEvent e) {
-//                //TODO
+//
 //            }
 //        });
 //        FoodPanel.add(AddDate);
@@ -388,16 +393,47 @@ public class GUI {
         JTextField FoodText = new JTextField();
         FoodText.setBounds(450,140,120,20);
         FoodPanel.add(FoodText);
+        ////////////////////////////////////////////////////////////////
+        JTextField foodWeightText = new JTextField();
+        foodWeightText.setBounds(500,180,120,20);
+        FoodPanel.add(foodWeightText);
         ////////////////////////////////////////////////////////////
         JButton AddFood = new JButton("Add");
         AddFood.setBounds(580,140,70,20);
         AddFood.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO
+                String y= foodyText.getText();
+                String m = foodmText.getText();
+                String d= fooddText.getText();
+                String w= foodWeightText.getText();
+                String food= FoodText.getText();
+                if(accman.isInt(y)&accman.isInt(m)&accman.isInt(d)&accman.isDouble(w)){
+                    try {
+                        if(foodman.has_food(food)){
+                           DateAndFood entry =  new DateAndFood(new ModDate(Integer.parseInt(y),
+                                   Integer.parseInt(m),Integer.parseInt(d)),
+                                   new Food(food,Double.parseDouble(w))
+                                   );
+
+                           current_account.getFood_record().add(entry);
+                            showMessageDialog(null,"Success");
+                        }
+                        else{showMessageDialog(null,"Invalid food name." +
+                                "You can use search to find the correct name.");}
+                    } catch (FileNotFoundException ex) {
+                        ex.printStackTrace();
+                    }
+
+
+                }
+                else{showMessageDialog(null,"Invalid Input. Date must " +
+                        "be integers and weight must be a double.");}
             }
         });
         FoodPanel.add(AddFood);
+
+
         ////////////////////////////////////////////////////////////////
         JButton SearchFood = new JButton("Search");
         SearchFood.setBounds(660,140,90,20);
@@ -409,21 +445,54 @@ public class GUI {
         });
         FoodPanel.add(SearchFood);
         ///////////////////////////////////////////////////////////////
-        JLabel lblWeight = new JLabel("Enter Food Weight:");
+        JLabel lblWeight = new JLabel("Enter Food Weight(g):");
         lblWeight.setBounds(360,140,200,100);
         FoodPanel.add(lblWeight);
         /////////////////////////////////////////////////////////////
-        JTextField WeightText = new JTextField();
-        WeightText.setBounds(500,180,120,20);
-        FoodPanel.add(WeightText);
+
         ////////////////////////////////////////////////////////////
         JButton deleteFood = new JButton("Delete");
         deleteFood.setBounds(760,140,90,20);
         deleteFood.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO
+                String y= foodyText.getText();
+                String m = foodmText.getText();
+                String d= fooddText.getText();
+                String w= foodWeightText.getText();
+                String food= FoodText.getText();
+                if(accman.isInt(y)&accman.isInt(m)&accman.isInt(d)&accman.isDouble(w)){
+                    try {
+                        if(foodman.has_food(food)){
+                            DateAndFood entry =  new DateAndFood(new ModDate(Integer.parseInt(y),
+                                    Integer.parseInt(m),Integer.parseInt(d)),
+                                    new Food(food,Double.parseDouble(w))
+                            );
+                            boolean food_in_list = false;
+                            for(DateAndFood i:current_account.getFood_record()){
+                                if(entry.isEqual(i)){
+                                    food_in_list=true;
+                                    entry=i;
+                                }
+                            }
+                            if(food_in_list) {
+                                current_account.getFood_record().remove(entry);
+                                showMessageDialog(null, "Success");
+                            }else{showMessageDialog(null, "Entry does not exist " +
+                                    "in database");}
+                        }
+                        else{showMessageDialog(null,"Invalid food name." +
+                                "You can use search to find the correct name.");}
+                    } catch (FileNotFoundException ex) {
+                        ex.printStackTrace();
+                    }
+
+
+                }
+                else{showMessageDialog(null,"Invalid Input. Date must " +
+                        "be integers and weight must be a double.");}
             }
+
         });
         FoodPanel.add(deleteFood);
         //*********************************************************
@@ -467,13 +536,44 @@ public class GUI {
         JTextField exerciseText = new JTextField();
         exerciseText.setBounds(455,140,120,20);
         exPanel.add(exerciseText);
+        /////////////////////////////////////////////////////////////
+        JTextField extimeText = new JTextField();
+        extimeText.setBounds(530,180,120,20);
+        exPanel.add(extimeText);
+        ////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////
         JButton Addex = new JButton("Add");
         Addex.setBounds(580,140,70,20);
         Addex.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO
+                String y= exyText.getText();
+                String m = exmText.getText();
+                String d= exdText.getText();
+                String t= extimeText.getText();
+                String exc= exerciseText.getText();
+                if(accman.isInt(y)&accman.isInt(m)&accman.isInt(d)&accman.isDouble(t)){
+                    try {
+                        if(exman.hasExercise(exc)){
+                            DateAndExercise entry =  new DateAndExercise(new ModDate(Integer.parseInt(y),
+                                    Integer.parseInt(m),Integer.parseInt(d)),
+                                    new Exercise(exc,Double.parseDouble(t))
+                            );
+
+                            current_account.getExercise_record().add(entry);
+                            showMessageDialog(null,"Success");
+                        }
+                        else{showMessageDialog(null,"Invalid exercise name." +
+                                "You can use search to find the correct name.");}
+                    } catch (FileNotFoundException ex) {
+                        ex.printStackTrace();
+                    }
+
+
+                }
+                else{showMessageDialog(null,"Invalid Input. Date must " +
+                        "be integers and time must be a double.");}
+
             }
         });
         exPanel.add(Addex);
@@ -488,23 +588,58 @@ public class GUI {
         });
         exPanel.add(Searchex);
         ///////////////////////////////////////////////////////////////
-        JLabel exlblWeight = new JLabel("Exercise Duration:");
+        JLabel exlblWeight = new JLabel("Exercise Duration(Minutes):");
         exlblWeight.setBounds(360,140,200,100);
         exPanel.add(exlblWeight);
         /////////////////////////////////////////////////////////////
-        JTextField exWeightText = new JTextField();
-        exWeightText.setBounds(500,180,120,20);
-        exPanel.add(exWeightText);
-        ////////////////////////////////////////////////////////////
+
         JButton deleteex = new JButton("Delete");
         deleteex.setBounds(760,140,90,20);
         deleteex.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO
+                String y= exyText.getText();
+                String m = exmText.getText();
+                String d= exdText.getText();
+                String t= extimeText.getText();
+                String exc= exerciseText.getText();
+                if(accman.isInt(y)&accman.isInt(m)&accman.isInt(d)&accman.isDouble(t)){
+                    try {
+                        if(exman.hasExercise(exc)){
+                            DateAndExercise entry =  new DateAndExercise(new ModDate(Integer.parseInt(y),
+                                    Integer.parseInt(m),Integer.parseInt(d)),
+                                    new Exercise(exc,Double.parseDouble(t))
+                            );
+
+                            boolean ex_in_list = false;
+                            for(DateAndExercise i:current_account.getExercise_record()){
+                                if(entry.isEqual(i)){
+                                    ex_in_list=true;
+                                    entry=i;
+                                }
+                            }
+                            if(ex_in_list) {
+                                current_account.getExercise_record().remove(entry);
+                                showMessageDialog(null, "Success");
+                            }else{showMessageDialog(null, "Entry does not exist " +
+                                    "in database");}
+                        }
+                        else{showMessageDialog(null,"Invalid exercise name." +
+                                "You can use search to find the correct name.");}
+                    } catch (FileNotFoundException ex) {
+                        ex.printStackTrace();
+                    }
+
+
+                }
+                else{showMessageDialog(null,"Invalid Input. Date must " +
+                        "be integers and time must be a double.");}
             }
         });
         exPanel.add(deleteex);
+        //*********************************************************
+        //*********************************************************
+
         //*********************************************************
         //*********************************************************
         frame.add(Logpanel);

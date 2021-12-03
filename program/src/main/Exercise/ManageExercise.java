@@ -6,9 +6,9 @@ import java.util.Scanner;
 
 public class ManageExercise {
 
-    public void ManageAccount(){}
+    public ManageExercise(){}
 
-    public boolean findExercise(String name) throws FileNotFoundException {
+    public boolean hasExercise(String name) throws FileNotFoundException {
         File text = new File("ExerciseData.txt");
         Scanner s = new Scanner(text);
         boolean has_exercise=false;
@@ -16,6 +16,7 @@ public class ManageExercise {
         while(s.hasNextLine()) {
             if (line.equals(name)) {
                 has_exercise = true;
+                break;
             } else {
                 line=s.nextLine();}
         }

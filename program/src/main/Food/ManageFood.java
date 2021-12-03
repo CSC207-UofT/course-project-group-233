@@ -44,4 +44,25 @@ public class ManageFood {
         }
         return null;
     }
+
+    public boolean has_food(String name) throws FileNotFoundException {
+        File text = new File("FoodData.txt");
+        Scanner s = new Scanner(text);
+        boolean has_food=false;
+        String line=s.nextLine();
+        while(s.hasNextLine()) {
+            if(!line.equals("") & !line.equals("Milk & Dairy produce")
+                    & !line.equals("Fats & Sugars") & !line.equals("Fruits & Vegetables")
+                    & !line.equals("Meats & Fish") & !line.equals("Breads & Cereals")){
+            if (line.equals(name)) {
+                has_food = true;
+                break;
+            } else {
+                line=s.nextLine();}
+            }else{if(s.hasNextLine()){line=s.nextLine();}else{break;}}
+
+        }return has_food;
+    }
+
+
 }
