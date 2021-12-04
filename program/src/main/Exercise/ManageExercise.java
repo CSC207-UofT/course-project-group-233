@@ -18,8 +18,28 @@ public class ManageExercise {
                 has_exercise = true;
                 break;
             } else {
-                line=s.nextLine();}
+                if(s.hasNextLine()){line=s.nextLine();}else{break;}}
         }
         return has_exercise;
+    }
+
+    public double getMET(String exc) throws FileNotFoundException {
+        File text = new File("ExerciseData.txt");
+        Scanner s = new Scanner(text);
+        String line= s.nextLine();
+        double result=0.0;
+        while(s.hasNextLine()){
+            if(line.equals(exc)){
+                result=Double.parseDouble(s.nextLine());
+                break;
+            }
+            else {if(s.hasNextLine()){line=s.nextLine();}else{break;}}
+        }
+        return result;
+
+    }
+
+    public double getTotalExCal(Exercise exercise,double weight) throws FileNotFoundException {
+        return (exercise.getTime()*(this.getMET(exercise.getName())*3.5*weight/200));
     }
 }

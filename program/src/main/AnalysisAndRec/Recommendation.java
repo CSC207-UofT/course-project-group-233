@@ -12,42 +12,42 @@ public class Recommendation {
         if(age > 60){
             recom.add("Taichi");
             recom.add("Swimming");
-            return recom;
+
         }
 
         if ((age > 40) && (age < 60)){
-            if (Objects.equals(gender, "m")){
-                if (weight > 80.0){
+            if (gender.equals("m")){
+                if (weight > 120.0){
                     recom.add("Walking slowly");
-                    return recom;
+
                 }
                 else{
                     recom.add("Badminton");
                     recom.add("Soccer");
                     recom.add("Biking");
                     recom.add("Table Tennis");
-                    recom.add("pool");
-                    return recom;
+                    recom.add("Pool");
+
                 }
             }
             else{
-                if (weight > 80.0){
+                if (weight > 120.0){
                     recom.add("Walking slowly");
-                    return recom;
+
                 }
                 else{
                     recom.add("Dancing");
                     recom.add("Walking");
-                    recom.add("pool");
-                    return recom;
+                    recom.add("Pool");
+                    recom.add("Table Tennis");
                 }
             }
         }
         if ((age > 20) && (age < 40)){
-            if (Objects.equals(gender, "m")){
-                if (weight > 80.0){
+            if (gender.equals("m")){
+                if (weight > 120.0){
                     recom.add("Walking slowly");
-                    return recom;
+
                 }
                 else{
                     recom.add("Weightlifting");
@@ -58,11 +58,11 @@ public class Recommendation {
                     recom.add("Basketball");
                     recom.add("Hiking");
                     recom.add("Badminton");
-                    return recom;
+
                 }
             }
             else{
-                if (weight > 80.0){
+                if (weight > 120.0){
                     recom.add("Walking slowly");
                     return recom;
                 }
@@ -74,15 +74,15 @@ public class Recommendation {
                     recom.add("Dancing");
                     recom.add("Hiking");
                     recom.add("Badminton");
-                    return recom;
+
                 }
             }
         }
         if (age <= 20){
-            if (Objects.equals(gender,"m")){
-                if(weight > 80.0) {
+            if (gender.equals("m")){
+                if(weight > 120.0) {
                     recom.add("Walking slowly");
-                    return recom;
+
                 }
                 else{
                     recom.add("Swimming");
@@ -98,10 +98,23 @@ public class Recommendation {
                     recom.add("Basketball");
                     recom.add("Walking");
                     recom.add("pool");
-                    return recom;
+
 
                 }
             }
+            else{recom.add("Swimming");
+                recom.add("Running");
+                recom.add("Yoga");
+                recom.add("Weightlifting");
+                recom.add("Dancing");
+                recom.add("Hiking");
+                recom.add("Badminton");
+                recom.add("Soccer");
+                recom.add("Biking");
+                recom.add("Table Tennis");
+                recom.add("Basketball");
+                recom.add("Walking");
+                recom.add("pool");}
         }
         return recom;
     }

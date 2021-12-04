@@ -10,7 +10,8 @@ public class Testhasfood {
 
         ManageFood mf = new ManageFood();
         System.out.println(mf.has_food("Milk skimmed"));
-        //returned true, the desired result
+        System.out.println(mf.has_food("ilk skimmed"));
+        //returned the desired result
     }
 
 }

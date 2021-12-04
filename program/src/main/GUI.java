@@ -697,7 +697,8 @@ public class GUI {
             public void actionPerformed(ActionEvent e) {
 
                 try {
-                    anatxt.setText(ana.foodrectoString(current_account));
+                    anatxt.setText(ana.foodrectoString(current_account)+"\n"
+                                   +ana.exrecToString(current_account, current_account.getWeight()));
                 } catch (FileNotFoundException ex) {
                     ex.printStackTrace();
                 }
