@@ -3,18 +3,21 @@ package AnalysisAndRec;
 import java.util.ArrayList;
 import java.util.Objects;
 
+// based on the users' age, gender and weight, give the suggestion for the users on exercise or the food.
+
 public class Recommendation {
 
     public Recommendation(){}
 
     public ArrayList<String> recom_exercise(String gender, int age, double weight){
         ArrayList<String> recom = new ArrayList<String>();
+        // the suggestion for the people who are above 60.
         if(age > 60){
             recom.add("Taichi");
             recom.add("Swimming");
 
         }
-
+        // the suggestion for the people who are 40 - 60
         if ((age > 40) && (age < 60)){
             if (gender.equals("m")){
                 if (weight > 120.0){
@@ -78,6 +81,7 @@ public class Recommendation {
                 }
             }
         }
+        // the suggestion for the people who are less than 20 years old.
         if (age <= 20){
             if (gender.equals("m")){
                 if(weight > 120.0) {
@@ -119,15 +123,17 @@ public class Recommendation {
         return recom;
     }
 
-
+    // the food suggestions
     public ArrayList <String> recom_food(String gender, int age, double weight){
         ArrayList <String> recomd = new ArrayList <String> ();
+        // the food suggestions for people who are less than 5
         if (age < 5 ) {
 
             recomd.add("Milk");
             recomd.add("Blueberry");
 
         }
+        // the age between 5 - 15
         else if ((5 < age) && (age <15)) {
             if(weight < 35.0){
 
@@ -149,6 +155,7 @@ public class Recommendation {
 
             }
         }
+        //the age between 15 - 30
         else if ((15 < age) && (age <30)) {
             if(weight < 60.0){
 
@@ -172,6 +179,7 @@ public class Recommendation {
 
             }
         }
+        //the age between 30 - 50
         else if ((30 < age) && (age < 50)) {
             if(weight < 65.0){
 
@@ -197,7 +205,8 @@ public class Recommendation {
 
             }
         }
-        else if ((50 < age)){
+        // the age greater than 50
+        else if ((50 > age)){
             if(weight < 65.0){
 
                 recomd.add("Milk");
