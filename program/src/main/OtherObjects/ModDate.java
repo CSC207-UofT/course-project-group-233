@@ -38,4 +38,8 @@ public class ModDate {
     public boolean isEqual(ModDate date){
         return (this.year==date.year&this.month==date.month&this.day==date.day);
     }
+
+    public String beString(){return Integer.toString(this.year)
+                            +"."+Integer.toString(this.month)+"."+Integer.toString(this.day);}
+
 }

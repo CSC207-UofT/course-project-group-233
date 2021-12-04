@@ -1,4 +1,5 @@
 import Account.*;
+import AnalysisAndRec.Analyses;
 import DateAndObject.DateAndExercise;
 import DateAndObject.DateAndFood;
 import Exercise.*;
@@ -20,6 +21,7 @@ public class GUI {
     ManageAccount accman= new ManageAccount();
     ManageFood foodman= new ManageFood();
     ManageExercise exman = new ManageExercise();
+    Analyses ana = new Analyses();
 
     Account current_account= accman.creatEmptyAcc();
     JFrame frame = new JFrame();
@@ -57,6 +59,8 @@ public class GUI {
 
         //exercise panel
         JPanel exPanel= new JPanel(null);
+        //analysis and recommend penal
+        JPanel aandrPanel= new JPanel(null);
 
 
         //sign up switch button
@@ -242,7 +246,18 @@ public class GUI {
                 you close the application.\s
                 Anything unsaved will be lost.""");
         Savewarning.setBounds(750,400,200,55);
+        Savewarning.setEditable(false);
         MainMenuPanel.add(Savewarning);
+        ///////////////////////////////////////////////////////////////////////
+        JButton gotoarButton = new JButton("Analysis and Recommendation");
+        gotoarButton.setBounds(300,480,400,50);
+        gotoarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                switchPanel(aandrPanel);
+            }
+        });
+        MainMenuPanel.add(gotoarButton);
         //*********************************************************
         //*********************************************************
         //account info panel
@@ -639,7 +654,56 @@ public class GUI {
         exPanel.add(deleteex);
         //*********************************************************
         //*********************************************************
+        //a and r panel
+        JLabel aandrTitle = new JLabel("Analysis and Recommendation");
+        aandrTitle.setBounds(470,1,200,100);
+        aandrPanel.add(aandrTitle);
+        /////////////////////////////////////////////////////////////
+        JButton BackMenuar = new JButton("Menu");
+        BackMenuar.setBounds(360,500,100,30);
+        BackMenuar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                switchPanel(MainMenuPanel);
+            }
+        });
+        aandrPanel.add(BackMenuar);
+        /////////////////////////////////////////////////////////////
+        JTextArea rectxt= new JTextArea();
+        rectxt.setBounds(260,130,200,300);
+        rectxt.setEditable(false);
+        aandrPanel.add(rectxt);
+        /////////////////////////////////////////////////////////////
+        JTextArea anatxt= new JTextArea();
+        anatxt.setBounds(660,130,200,200);
+        anatxt.setEditable(false);
+        JScrollPane anascroll = new JScrollPane(anatxt);
+        anascroll.setBounds(610,130,350,200);
+        aandrPanel.add(anascroll);
+        /////////////////////////////////////////////////////////////
+        JTextArea dateanatxt= new JTextArea();
+        dateanatxt.setBounds(660,350,200,180);
+        dateanatxt.setEditable(false);
+        aandrPanel.add(dateanatxt);
+        /////////////////////////////////////////////////////////////
+        JButton btnrecom = new JButton("Recommendation");
+        btnrecom.setBounds(260,70,200,30);
+        aandrPanel.add(btnrecom);
+        /////////////////////////////////////////////////////////////
+        JButton btnAnalysis = new JButton("Analysis");
+        btnAnalysis.setBounds(660,70,200,30);
+        btnAnalysis.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
 
+                try {
+                    anatxt.setText(ana.foodrectoString(current_account));
+                } catch (FileNotFoundException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+        aandrPanel.add(btnAnalysis);
         //*********************************************************
         //*********************************************************
         frame.add(Logpanel);

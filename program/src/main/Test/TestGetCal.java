@@ -4,13 +4,15 @@ import Food.ManageFood;
 
 import java.io.IOException;
 
-public class Testhasfood {
+public class TestGetCal {
 
     public static void main(String[] args) throws IOException {
 
         ManageFood mf = new ManageFood();
-        System.out.println(mf.has_food("Milk skimmed"));
-        //returned true, the desired result
+        System.out.println(mf.getCalorie_Per_Gram("Milk skimmed"));
+        //got the correct number
     }
+
+
 
 }

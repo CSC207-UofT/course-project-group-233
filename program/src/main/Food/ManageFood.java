@@ -30,6 +30,7 @@ public class ManageFood {
         File text = new File("FoodData.txt");
         Scanner sc = new Scanner(text);
         String line = sc.nextLine();
+        double result=0.0;
         while (sc.hasNextLine()){
             if (!line.equals("") & !line.equals("Milk & Dairy produce")
                     & !line.equals("Fats & Sugars") & !line.equals("Fruits & Vegetables")
@@ -37,12 +38,14 @@ public class ManageFood {
                 if (line.equals(fd)){
                     sc.nextLine();
                     line = sc.nextLine();
-                    return Double.parseDouble(line);
+                    result= Double.parseDouble(line);
+                    break;
                 }
+                else{if(sc.hasNextLine()){line=sc.nextLine();}else{break;}}
             }
-            line = sc.nextLine();
+            else{if(sc.hasNextLine()){line=sc.nextLine();}else{break;}}
         }
-        return null;
+        return result;
     }
 
     public boolean has_food(String name) throws FileNotFoundException {
@@ -63,6 +66,13 @@ public class ManageFood {
 
         }return has_food;
     }
+
+    public Double getTotalCal(Food food) throws FileNotFoundException {
+        double calpergram=this.getCalorie_Per_Gram(food.getName());
+        return food.getWeight()*calpergram;
+    }
+
+
 
 
 }

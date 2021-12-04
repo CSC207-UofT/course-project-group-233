@@ -1,7 +1,11 @@
+package AnalysisAndRec;
+
 import java.util.ArrayList;
 import java.util.Objects;
 
 public class Recommendation {
+
+    public Recommendation(){}
 
     public ArrayList<String> recom_exercise(String gender, int age, double weight){
         ArrayList<String> recom = new ArrayList<String>();

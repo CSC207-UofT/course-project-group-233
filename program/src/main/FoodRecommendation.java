@@ -1,4 +1,4 @@
-//public class FoodRecommendation implements Recommendation{
+//public class FoodRecommendation implements Analysis.Recommendation{
 //    public String recommendation() {}
 //    }
 //}

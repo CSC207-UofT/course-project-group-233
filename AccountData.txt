@@ -59,11 +59,11 @@ Bagel
 10.2
 *foodrec
 2021
-12
-12
+1
+2
 *foodbreak
 Ice cream
-100.0
+4.0
 
 *exrec
 2021
