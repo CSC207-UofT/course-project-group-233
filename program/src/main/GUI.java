@@ -1,5 +1,6 @@
 import Account.*;
 import AnalysisAndRec.Analyses;
+import AnalysisAndRec.Recommendation;
 import DateAndObject.DateAndExercise;
 import DateAndObject.DateAndFood;
 import Exercise.*;
@@ -22,6 +23,7 @@ public class GUI {
     ManageFood foodman= new ManageFood();
     ManageExercise exman = new ManageExercise();
     Analyses ana = new Analyses();
+    Recommendation rec = new Recommendation();
 
     Account current_account= accman.creatEmptyAcc();
     JFrame frame = new JFrame();
@@ -672,7 +674,9 @@ public class GUI {
         JTextArea rectxt= new JTextArea();
         rectxt.setBounds(260,130,200,300);
         rectxt.setEditable(false);
-        aandrPanel.add(rectxt);
+        JScrollPane recscroll= new JScrollPane(rectxt);
+        recscroll.setBounds(210,130,300,300);
+        aandrPanel.add(recscroll);
         /////////////////////////////////////////////////////////////
         JTextArea anatxt= new JTextArea();
         anatxt.setBounds(660,130,200,200);
@@ -684,10 +688,25 @@ public class GUI {
         JTextArea dateanatxt= new JTextArea();
         dateanatxt.setBounds(660,350,200,180);
         dateanatxt.setEditable(false);
-        aandrPanel.add(dateanatxt);
+        JScrollPane dateanascroll= new JScrollPane(dateanatxt);
+        dateanascroll.setBounds(610,350,350,140);
+        aandrPanel.add(dateanascroll);
         /////////////////////////////////////////////////////////////
         JButton btnrecom = new JButton("Recommendation");
         btnrecom.setBounds(260,70,200,30);
+        btnrecom.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                rectxt.setText(rec.accinfoString(current_account)+"\n"
+                       +"Exercise Recommendations: "+"\n"+
+                        rec.recom_exercise(current_account.getGender(),current_account.getAge(),
+                                current_account.getWeight())
+                +"\n"+"Food Recommendations: "+"\n"+
+                        rec.recom_food(current_account.getGender(),current_account.getAge(),
+                                current_account.getWeight()));
+            }
+        });
         aandrPanel.add(btnrecom);
         /////////////////////////////////////////////////////////////
         JButton btnAnalysis = new JButton("Analysis");
@@ -699,6 +718,8 @@ public class GUI {
                 try {
                     anatxt.setText(ana.foodrectoString(current_account)+"\n"
                                    +ana.exrecToString(current_account, current_account.getWeight()));
+
+                    dateanatxt.setText(ana.dateana(current_account));
                 } catch (FileNotFoundException ex) {
                     ex.printStackTrace();
                 }

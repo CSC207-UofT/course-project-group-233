@@ -1,5 +1,7 @@
 package AnalysisAndRec;
 
+import Account.Account;
+
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -233,4 +235,16 @@ public class Recommendation {
             }
         }return recomd;
     }
+
+    public String accinfoString(Account account){
+        String gender;
+        if(account.getGender().equals("m")){gender="male";}else {gender="female";}
+        return ("You are a "+Integer.toString(account.getAge())+" years old "
+                +gender+" weighing "+Double.toString(account.getWeight())+" kg");
+    }
+
+
+
+
+
 }

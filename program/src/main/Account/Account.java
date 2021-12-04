@@ -309,5 +309,10 @@ public class Account {
             else{if(s.hasNextLine()){cur_line=s.nextLine();}else{break;}}
         }
     }
+
+    public int getAge(){
+        int year = Calendar.getInstance().get(Calendar.YEAR);
+        return year-this.birthday.getYear();
+    }
 }
 
