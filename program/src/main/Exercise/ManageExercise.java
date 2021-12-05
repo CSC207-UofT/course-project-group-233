@@ -36,7 +36,6 @@ public class ManageExercise {
             else {if(s.hasNextLine()){line=s.nextLine();}else{break;}}
         }
         return result;
-
     }
 
     public double getTotalExCal(Exercise exercise,double weight) throws FileNotFoundException {
