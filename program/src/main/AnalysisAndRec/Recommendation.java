@@ -3,7 +3,6 @@ package AnalysisAndRec;
 import Account.Account;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 // based on the users' age, gender and weight, give the suggestion for the users on exercise or the food.
 
@@ -13,33 +12,37 @@ public class Recommendation {
 
     public ArrayList<String> recom_exercise(String gender, int age, double weight){
         ArrayList<String> recom = new ArrayList<String>();
-        // the suggestion for the people who are above 60.
+        // the suggestion for the people who are above 60 years old.
         if(age > 60){
             recom.add("Taichi");
             recom.add("Swimming");
-
         }
-        // the suggestion for the people who are 40 - 60
+        // the suggestion for the people who are between 40 and 60 years old.
         if ((age > 40) && (age < 60)){
+            // for male
             if (gender.equals("m")){
+                // for heavy weight male
                 if (weight > 120.0){
                     recom.add("Walking slowly");
-
+                    recom.add("Swimming");
                 }
+                // for normal weight male
                 else{
                     recom.add("Badminton");
                     recom.add("Soccer");
                     recom.add("Biking");
                     recom.add("Table Tennis");
                     recom.add("Pool");
-
                 }
             }
+            // for female
             else{
+                // for heavy weight female
                 if (weight > 120.0){
                     recom.add("Walking slowly");
-
+                    recom.add("Swimming");
                 }
+                // for normal weight female
                 else{
                     recom.add("Dancing");
                     recom.add("Walking");
@@ -128,33 +131,27 @@ public class Recommendation {
     // the food suggestions
     public ArrayList <String> recom_food(String gender, int age, double weight){
         ArrayList <String> recomd = new ArrayList <String> ();
-        // the food suggestions for people who are less than 5
+        // the food suggestions for people who are less than 5 years old
         if (age < 5 ) {
-
             recomd.add("Milk");
             recomd.add("Blueberry");
-
         }
-        // the age between 5 - 15
+        // the age between 5 and 15
         else if ((5 < age) && (age <15)) {
             if(weight < 35.0){
-
                 recomd.add("Milk");
                 recomd.add("Blueberry");
                 recomd.add("Beef");
                 recomd.add("eggs");
                 recomd.add("shrimp");
                 recomd.add("snacks");
-
             }
             else{
-
                 recomd.add("Milk");
                 recomd.add("Blueberry");
                 recomd.add("Beef");
                 recomd.add("eggs");
                 recomd.add("shrimp");
-
             }
         }
         //the age between 15 - 30
