@@ -9,19 +9,45 @@ import java.util.Scanner;
 public class ManageFood {
     public ManageFood(){}
 
-    public ArrayList<String> searchFood(String name) throws FileNotFoundException {
+    /*public ArrayList<String> searchFood(String name) throws FileNotFoundException {
         ArrayList<String> result = new ArrayList<String>();
         File text = new File("FoodData.txt");
         Scanner s = new Scanner(text);
         String line = s.nextLine();
         while(s.hasNextLine()){
-            if (line !=""){
-                    if(Character.toLowerCase(name.charAt(0))==Character.toLowerCase(line.charAt(0))){
-                result.add(line);
+            if (!line.equals("")& !line.equals("Milk & Dairy produce")
+                    & !line.equals("Fats & Sugars") & !line.equals("Fruits & Vegetables")
+                    & !line.equals("Meats & Fish") & !line.equals("Breads & Cereals")){
+
+                if(Character.toLowerCase(name.charAt(0))==Character.toLowerCase(line.charAt(0))){
+
+                    result.add(line);
+                    if(s.hasNextLine()){line=s.nextLine();}else{break;}
             }
-            else{line=s.nextLine();}
+            else{if(s.hasNextLine()){line=s.nextLine();}else{break;}}
             }
-            else{line=s.nextLine();}
+            else{if(s.hasNextLine()){line=s.nextLine();}else{break;}}
+        }
+        return result;
+    }*/
+    public String searchFood(String name) throws FileNotFoundException {
+        String result="";
+        File text = new File("FoodData.txt");
+        Scanner s = new Scanner(text);
+        String line = s.nextLine();
+        char a1=Character.toLowerCase(name.charAt(0));
+        while(s.hasNextLine()){
+            if (!line.equals("")& !line.equals("Milk & Dairy produce")
+                    & !line.equals("Fats & Sugars") & !line.equals("Fruits & Vegetables")
+                    & !line.equals("Meats & Fish") & !line.equals("Breads & Cereals")){
+                char a2=(Character.toLowerCase(line.charAt(0)));
+                if(a1==a2){
+                    result+=(line+"\n");
+                    if(s.hasNextLine()){line=s.nextLine();}else{break;}
+                }
+                else{if(s.hasNextLine()){line=s.nextLine();}else{break;}}
+            }
+            else{if(s.hasNextLine()){line=s.nextLine();}else{break;}}
         }
         return result;
     }

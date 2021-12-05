@@ -414,6 +414,13 @@ public class GUI {
         JTextField foodWeightText = new JTextField();
         foodWeightText.setBounds(500,180,120,20);
         FoodPanel.add(foodWeightText);
+        ////////////////////////////////////////////////////////////////
+        JTextArea fsearchtxt= new JTextArea();
+        fsearchtxt.setBounds(260,130,200,300);
+        fsearchtxt.setEditable(false);
+        JScrollPane foodscroll= new JScrollPane(fsearchtxt);
+        foodscroll.setBounds(360,205,300,150);
+        FoodPanel.add(foodscroll);
         ////////////////////////////////////////////////////////////
         JButton AddFood = new JButton("Add");
         AddFood.setBounds(580,140,70,20);
@@ -457,7 +464,11 @@ public class GUI {
         SearchFood.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO
+                try {
+                    fsearchtxt.setText(foodman.searchFood(FoodText.getText()));
+                } catch (FileNotFoundException ex) {
+                    ex.printStackTrace();
+                }
             }
         });
         FoodPanel.add(SearchFood);
@@ -558,6 +569,12 @@ public class GUI {
         extimeText.setBounds(530,180,120,20);
         exPanel.add(extimeText);
         ////////////////////////////////////////////////////////////
+        JTextArea exsearchtxt= new JTextArea();
+        exsearchtxt.setBounds(260,130,200,300);
+        exsearchtxt.setEditable(false);
+        JScrollPane exscroll= new JScrollPane(exsearchtxt);
+        exscroll.setBounds(360,205,300,150);
+        exPanel.add(exscroll);
         ////////////////////////////////////////////////////////////
         JButton Addex = new JButton("Add");
         Addex.setBounds(580,140,70,20);
@@ -600,7 +617,11 @@ public class GUI {
         Searchex.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO
+                try {
+                    exsearchtxt.setText(exman.searchEx(exerciseText.getText()));
+                } catch (FileNotFoundException ex) {
+                    ex.printStackTrace();
+                }
             }
         });
         exPanel.add(Searchex);
