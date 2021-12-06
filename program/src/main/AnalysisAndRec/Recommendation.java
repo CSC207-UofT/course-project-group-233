@@ -12,19 +12,24 @@ public class Recommendation {
 
     public ArrayList<String> recom_exercise(String gender, int age, double weight){
         ArrayList<String> recom = new ArrayList<String>();
-        // the suggestion for the people who are above 60 years old.
-        if(age > 60){
+        // the suggestion for the people who are above 60 years old (include 60).
+        if(age >= 60){
             recom.add("Taichi");
             recom.add("Swimming");
+            recom.add("Brisk Walking");
+            recom.add("Strengthen Muscles");
+            recom.add("Standing on one foot");
         }
-        // the suggestion for the people who are between 40 and 60 years old.
-        if ((age > 40) && (age < 60)){
+        // the suggestion for the people who are between 40 and 60 years old (include 40 and exclude 60).
+        if ((age >= 40) && (age < 60)){
             // for male
             if (gender.equals("m")){
                 // for heavy weight male
                 if (weight > 120.0){
                     recom.add("Walking slowly");
                     recom.add("Swimming");
+                    recom.add("Brisk Walking");
+                    recom.add("Strengthen Muscles");
                 }
                 // for normal weight male
                 else{
@@ -42,6 +47,12 @@ public class Recommendation {
                     recom.add("Walking slowly");
                     recom.add("Swimming");
                 }
+                // for light weight female
+                if (weight < 60.0){
+                    recom.add("Walking slowly");
+                    recom.add("Swimming");
+                    recom.add("Jogging");
+                }
                 // for normal weight female
                 else{
                     recom.add("Dancing");
@@ -51,6 +62,7 @@ public class Recommendation {
                 }
             }
         }
+        // the suggestion for the people who are between 20 and 40
         if ((age > 20) && (age < 40)){
             if (gender.equals("m")){
                 if (weight > 120.0){
