@@ -4,8 +4,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+// User Case Class Exercise.ManageExercise
 public class ManageExercise {
 
+    // contributor
     public ManageExercise(){}
 
     public boolean hasExercise(String name) throws FileNotFoundException {

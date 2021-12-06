@@ -1,21 +1,15 @@
 import Account.*;
 import AnalysisAndRec.*;
-//import AnalysisAndRec.Recommendation;
 import DateAndObject.*;
-//import DateAndObject.DateAndFood;
 import Exercise.*;
 import Food.*;
-//import Food.ManageFood;
 import OtherObjects.*;
 import static javax.swing.JOptionPane.showMessageDialog;
-
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class GUI {
     //set current account to be empty
@@ -38,17 +32,11 @@ public class GUI {
 
     }
     public GUI(){
-
-
         //Login panel
         JPanel Logpanel = new JPanel(null);
 
-
-
         //sign up panel
         JPanel SignPanel = new JPanel(null);
-        //SignPanel.setBorder(BorderFactory.createEmptyBorder(30,30,50,50));
-        //SignPanel.setLayout(new GridLayout(0,1));
 
         //main menu panel
         JPanel MainMenuPanel= new JPanel(null);
@@ -61,9 +49,9 @@ public class GUI {
 
         //exercise panel
         JPanel exPanel= new JPanel(null);
+
         //analysis and recommend penal
         JPanel aandrPanel= new JPanel(null);
-
 
         //sign up switch button
         JButton SignUpSwitch = new JButton("Create Account");
@@ -245,7 +233,7 @@ public class GUI {
         ///////////////////////////////////////////////////////////////////////
         JTextArea Savewarning = new JTextArea("""
                 Warning: Always save before\s
-                you close the application.\s
+                you close the application or analyse.\s
                 Anything unsaved will be lost.""");
         Savewarning.setBounds(750,400,200,55);
         Savewarning.setEditable(false);
@@ -271,14 +259,14 @@ public class GUI {
         lblSetGender.setBounds(360,60,200,100);
         AccInfoPanel.add(lblSetGender);
         ///////////////////////////////////////////////////////////////////
-        JLabel lblSetBirth = new JLabel("Set Birthday(year/month/day)");
+        JLabel lblSetBirth = new JLabel("Set Birthday(yyyy/mm/dd)");
         lblSetBirth.setBounds(360,100,200,100);
         AccInfoPanel.add(lblSetBirth);
         ////////////////////////////////////////////////////////////////
         JLabel lblSetWeight = new JLabel("Set Weight(kg)");
         lblSetWeight.setBounds(360,140,200,100);
         AccInfoPanel.add(lblSetWeight);
-        ////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////// Gender Male
         JButton SetMale = new JButton("Male");
         SetMale.setBounds(480,100,100,20);
         SetMale.addActionListener(new ActionListener() {
@@ -288,7 +276,7 @@ public class GUI {
             }
         });
         AccInfoPanel.add(SetMale);
-        /////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////// Gender Female
         JButton SetFemale = new JButton("Female");
         SetFemale.setBounds(600,100,100,20);
         SetFemale.addActionListener(new ActionListener() {
@@ -298,6 +286,16 @@ public class GUI {
             }
         });
         AccInfoPanel.add(SetFemale);
+        ///////////////////////////////////////////////////////////// Gender Other
+        JButton SetOther = new JButton("Other");
+        SetOther.setBounds(720,100,100,20);
+        SetOther.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                current_account.setGender("o");
+            }
+        });
+        AccInfoPanel.add(SetOther);
         ///////////////////////////////////////////////////////////
         JTextField byearText = new JTextField();
         byearText.setBounds(540,140,60,20);
@@ -325,7 +323,6 @@ public class GUI {
                     showMessageDialog(null,"Success!");
                 }
                 else{showMessageDialog(null,"Input must be integers.");}
-
             }
         });
         AccInfoPanel.add(SetBirth);
@@ -340,12 +337,10 @@ public class GUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(accman.isDouble(weightText.getText())){
-
                     current_account.setWeight(Double.parseDouble(weightText.getText()));
                     showMessageDialog(null,"Success!");
                 }
                 else{showMessageDialog(null,"Input must be a double.");}
-
             }
         });
         AccInfoPanel.add(SetWeight);
@@ -393,16 +388,6 @@ public class GUI {
         });
         FoodPanel.add(BackMenuFood);
         ///////////////////////////////////////////////////////////
-//        JButton AddDate = new JButton("Add");
-//        AddDate.setBounds(520,100,70,20);
-//        AddDate.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//
-//            }
-//        });
-//        FoodPanel.add(AddDate);
-        ///////////////////////////////////////////////////////////
         JLabel lblFood = new JLabel("Enter Food:");
         lblFood.setBounds(360,100,200,100);
         FoodPanel.add(lblFood);
@@ -439,7 +424,6 @@ public class GUI {
                                    Integer.parseInt(m),Integer.parseInt(d)),
                                    new Food(food,Double.parseDouble(w))
                                    );
-
                            current_account.getFood_record().add(entry);
                             showMessageDialog(null,"Success");
                         }
@@ -448,8 +432,6 @@ public class GUI {
                     } catch (FileNotFoundException ex) {
                         ex.printStackTrace();
                     }
-
-
                 }
                 else{showMessageDialog(null,"Invalid Input. Date must " +
                         "be integers and weight must be a double.");}
@@ -477,8 +459,6 @@ public class GUI {
         lblWeight.setBounds(360,140,200,100);
         FoodPanel.add(lblWeight);
         /////////////////////////////////////////////////////////////
-
-        ////////////////////////////////////////////////////////////
         JButton deleteFood = new JButton("Delete");
         deleteFood.setBounds(760,140,90,20);
         deleteFood.addActionListener(new ActionListener() {
@@ -514,13 +494,10 @@ public class GUI {
                     } catch (FileNotFoundException ex) {
                         ex.printStackTrace();
                     }
-
-
                 }
                 else{showMessageDialog(null,"Invalid Input. Date must " +
                         "be integers and weight must be a double.");}
             }
-
         });
         FoodPanel.add(deleteFood);
         //*********************************************************
@@ -667,8 +644,6 @@ public class GUI {
                     } catch (FileNotFoundException ex) {
                         ex.printStackTrace();
                     }
-
-
                 }
                 else{showMessageDialog(null,"Invalid Input. Date must " +
                         "be integers and time must be a double.");}
@@ -735,7 +710,6 @@ public class GUI {
         btnAnalysis.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 try {
                     anatxt.setText(ana.foodrectoString(current_account)+"\n"
                                    +ana.exrecToString(current_account, current_account.getWeight()));

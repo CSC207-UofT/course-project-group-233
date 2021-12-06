@@ -150,8 +150,13 @@ public class Recommendation {
                     recomd.add("Milk");
                     recomd.add("Blueberry");
                     recomd.add("Beef");
-                } else {
                     recomd.add("eggs");
+                    recomd.add("shrimp");
+                    recomd.add("snacks");
+                } else {
+                    recomd.add("Milk");
+                    recomd.add("Blueberry");
+                    recomd.add("Beef");
                     recomd.add("shrimp");
                     recomd.add("snacks");
                 }
@@ -167,31 +172,34 @@ public class Recommendation {
         //the age between 15 - 30
         else if ((15 < age) && (age <30)) {
             if(weight < 60.0){
-
-                recomd.add("Milk");
-                recomd.add("Blueberry");
-                recomd.add("Beef");
-                recomd.add("eggs");
-                recomd.add("shrimp");
-                recomd.add("Eggplant");
-                recomd.add("Asparagus");
-                recomd.add("snacks");
-
+                if(gender.equals("m")){
+                    recomd.add("Milk");
+                    recomd.add("Blueberry");
+                    recomd.add("Beef");
+                    recomd.add("eggs");
+                    recomd.add("shrimp");
+                } else {
+                    recomd.add("Milk");
+                    recomd.add("Blueberry");
+                    recomd.add("Beef");
+                    recomd.add("eggs");
+                    recomd.add("shrimp");
+                    recomd.add("Eggplant");
+                    recomd.add("Asparagus");
+                    recomd.add("snacks");
+                }
             }
             else{
-
                 recomd.add("Milk");
                 recomd.add("Blueberry");
                 recomd.add("Beef");
                 recomd.add("eggs");
                 recomd.add("shrimp");
-
             }
         }
         //the age between 30 - 50
         else if ((30 < age) && (age < 50)) {
             if(weight < 65.0){
-
                 recomd.add("Milk");
                 recomd.add("Blueberry");
                 recomd.add("eggs");
@@ -199,10 +207,8 @@ public class Recommendation {
                 recomd.add("Eggplant");
                 recomd.add("Asparagus");
                 recomd.add("Red dates");
-
             }
             else{
-
                 recomd.add("Milk");
                 recomd.add("Blueberry");
                 recomd.add("Beef");
@@ -211,13 +217,11 @@ public class Recommendation {
                 recomd.add("Honey");
                 recomd.add("Kelp");
                 recomd.add("Mushrooms");
-
             }
         }
         // the age greater than 50
         else if ((50 > age)){
             if(weight < 65.0){
-
                 recomd.add("Milk");
                 recomd.add("Blueberry");
                 recomd.add("Eggs");
@@ -226,10 +230,8 @@ public class Recommendation {
                 recomd.add("Apple");
                 recomd.add("Nuts");
                 recomd.add("Vitamin");
-
             }
             else{
-
                 recomd.add("Milk");
                 recomd.add("Blueberry");
                 recomd.add("Beef");
@@ -238,20 +240,20 @@ public class Recommendation {
                 recomd.add("Honey");
                 recomd.add("Vitamin");
                 recomd.add("Mushrooms");
-
             }
         }return recomd;
     }
 
     public String accinfoString(Account account){
         String gender;
-        if(account.getGender().equals("m")){gender="male";}else {gender="female";}
+        if(account.getGender().equals("m")){
+            gender = "male";
+        } else if (account.getGender().equals("f")){
+            gender = "female";
+        } else {
+            gender = "other gender";
+        }
         return ("You are a "+Integer.toString(account.getAge())+" years old "
                 +gender+" weighing "+Double.toString(account.getWeight())+" kg");
     }
-
-
-
-
-
 }

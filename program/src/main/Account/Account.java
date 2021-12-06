@@ -10,28 +10,17 @@ import Exercise.*;
 import java.io.*;
 import java.util.*;
 
+    // Entity Class Account.Account
 public class Account {
-    /*This class will be hold Account.Account basic information
-     */
 
-    private String password, username;
-    //private final Date date;
-    private ModDate birthday;
-    private  String gender;
-    private double weight;
-    private ArrayList<DateAndFood> food_record;
-    private ArrayList<DateAndExercise> exercise_record;
-    //private final ArrayList<String> date_record;
-    // the setter function for date_record is inside update_food_record
-    // String type of date is in "yyyy,mm,dd" type.
-    //private final ArrayList<ArrayList<String>> food_record;
-    // the setter function for food_record is inside update_food_record
-    // the index of date(String type) is corresponding to the index of ArrayList of food inside food_record
-    // This ArrayList contains all food eaten in date(String type)
-    //private ArrayList<ArrayList<Double>> weight_record;
+    private String password, username; // user's name and password
+    private ModDate birthday;   // user's birthday
+    private  String gender; // user's gender, male or female
+    private double weight;  // user's weight
+    private ArrayList<DateAndFood> food_record; // user's own recorded food
+    private ArrayList<DateAndExercise> exercise_record; // user's own recorded exercise
 
-
-
+    // Contributor
     public Account(String user,String password,String gender, double weight,ModDate bday,
                    ArrayList<DateAndFood> foodrecord, ArrayList<DateAndExercise>exerciserecord){
         this.username=user;
@@ -41,25 +30,23 @@ public class Account {
         this.birthday=bday;
         this.food_record=foodrecord;
         this.exercise_record=exerciserecord;
-
     }
 
-
-    public double getWeight(){
-        return weight;
+    // *************** get function ********************
+    public String getPassword(){
+        return password;
     }
 
     public String getUsername(){
         return username;
     }
-
-    public String getPassword(){
-        return password;
-    }
-
     public ModDate getBirthday() { return birthday; }
 
     public String getGender() { return gender; }
+
+    public double getWeight(){
+        return weight;
+    }
 
     public ArrayList<DateAndFood> getFood_record(){return this.food_record;}
 
@@ -67,6 +54,7 @@ public class Account {
         return exercise_record;
     }
 
+    // **************** set function *******************
     public void setWeight(double weight){
         this.weight = weight;
     }
@@ -148,11 +136,6 @@ public class Account {
                 cur_node.setNext(next_node);
                 cur_node=next_node;
             }
-
-            //ModLinkedList InfoList = new ModLinkedList("",null);
-
-            //InfoList.setContent("*user");
-            //ModLinkedList InfoList1 = new ModLinkedList(this.username,null);
             ModLinkedList InfoList = new ModLinkedList(this.password,null);
             ModLinkedList InfoList1 = new ModLinkedList(this.gender,null);
             ModLinkedList InfoLista = new ModLinkedList(this.weight,null);
@@ -165,14 +148,11 @@ public class Account {
             InfoLista.setNext(InfoList2);
             InfoList2.setNext(InfoList3);
             InfoList3.setNext(InfoList4);
-            //InfoList4.setNext(InfoList5);
-            //InfoList5.setNext(InfoList6);
 
             ModLinkedList InfoList5 = new ModLinkedList("",null);
             InfoList4.setNext(InfoList5);
             ModLinkedList infocur_node=InfoList5;
             for (DateAndFood i :this.food_record){
-
                 infocur_node.setContent("*foodrec");
                 infocur_node.setNext(new ModLinkedList(i.getDate().getYear(),null));
                 infocur_node=infocur_node.getNext();
@@ -206,9 +186,7 @@ public class Account {
                 infocur_node=infocur_node.getNext();
                 infocur_node.setNext(new ModLinkedList("",null));
                 infocur_node=infocur_node.getNext();
-
             }
-            //infocur_node.setNext(new ModLinkedList("*userend",null));
             ModLinkedList infolast_node=infocur_node;
 
             //find the position of the account's username
@@ -223,8 +201,8 @@ public class Account {
                 if(cur_node.getContent().equals("*userend")){break;}
                 else{cur_node=cur_node.getNext();}
             }
-            ModLinkedList connect_back= cur_node;//the second connect point
-
+            //the second connect point
+            ModLinkedList connect_back= cur_node;
             connect_front.setNext(InfoList);
             infolast_node.setNext(connect_back);
             FileWriter fw2 = new FileWriter(text);
@@ -235,12 +213,7 @@ public class Account {
                 cur_node=cur_node.getNext();
             }
             pw2.close();
-
-
         }
-
-
-
     }
 
     public void FillInfo() throws FileNotFoundException {
@@ -302,7 +275,6 @@ public class Account {
                         }
                         else{if(s.hasNextLine()){cur_line=s.nextLine();}else{break;}}
                     }
-
                 }
                 else{if(s.hasNextLine()){cur_line=s.nextLine();}else{break;}}
             }
