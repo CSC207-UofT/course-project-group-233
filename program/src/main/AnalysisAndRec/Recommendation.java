@@ -119,8 +119,6 @@ public class Recommendation {
                     recom.add("Basketball");
                     recom.add("Walking");
                     recom.add("pool");
-
-
                 }
             }
             else{recom.add("Swimming");
