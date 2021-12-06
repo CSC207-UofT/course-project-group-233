@@ -1,6 +1,6 @@
 package Test;
 
-import OtherObjects.ModLinkedList;
+import OtherObjects.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;

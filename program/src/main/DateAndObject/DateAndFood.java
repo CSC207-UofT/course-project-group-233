@@ -1,7 +1,7 @@
 package DateAndObject;
 
-import Food.Food;
-import OtherObjects.ModDate;
+import Food.*;
+import OtherObjects.*;
 
 public class DateAndFood extends DateAndObj{
 

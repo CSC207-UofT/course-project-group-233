@@ -1,8 +1,8 @@
 package DateAndObject;
 
 
-import Exercise.Exercise;
-import OtherObjects.ModDate;
+import Exercise.*;
+import OtherObjects.*;
 
 public class DateAndExercise extends DateAndObj{
 

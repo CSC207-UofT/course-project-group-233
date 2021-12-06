@@ -1,6 +1,6 @@
 package AnalysisAndRec;
 
-import Account.Account;
+import Account.*;
 
 import java.util.ArrayList;
 

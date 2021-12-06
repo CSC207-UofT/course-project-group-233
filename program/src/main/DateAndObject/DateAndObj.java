@@ -1,6 +1,6 @@
 package DateAndObject;
 
-import OtherObjects.ModDate;
+import OtherObjects.*;
 
 public class DateAndObj {
     private ModDate date;

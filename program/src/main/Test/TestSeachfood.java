@@ -1,7 +1,7 @@
 package Test;
 
-import Food.ManageFood;
-import OtherObjects.ModLinkedList;
+import Food.*;
+import OtherObjects.*;
 
 import java.io.File;
 import java.io.FileWriter;
