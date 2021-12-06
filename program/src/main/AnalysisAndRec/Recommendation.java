@@ -149,12 +149,15 @@ public class Recommendation {
         // the age between 5 and 15
         else if ((5 < age) && (age <15)) {
             if(weight < 35.0){
-                recomd.add("Milk");
-                recomd.add("Blueberry");
-                recomd.add("Beef");
-                recomd.add("eggs");
-                recomd.add("shrimp");
-                recomd.add("snacks");
+                if(gender.equals("m")){
+                    recomd.add("Milk");
+                    recomd.add("Blueberry");
+                    recomd.add("Beef");
+                } else {
+                    recomd.add("eggs");
+                    recomd.add("shrimp");
+                    recomd.add("snacks");
+                }
             }
             else{
                 recomd.add("Milk");
