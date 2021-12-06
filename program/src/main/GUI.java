@@ -1,12 +1,12 @@
 import Account.*;
-import AnalysisAndRec.Analyses;
-import AnalysisAndRec.Recommendation;
-import DateAndObject.DateAndExercise;
-import DateAndObject.DateAndFood;
+import AnalysisAndRec.*;
+//import AnalysisAndRec.Recommendation;
+import DateAndObject.*;
+//import DateAndObject.DateAndFood;
 import Exercise.*;
-import Food.Food;
-import Food.ManageFood;
-import OtherObjects.ModDate;
+import Food.*;
+//import Food.ManageFood;
+import OtherObjects.*;
 import static javax.swing.JOptionPane.showMessageDialog;
 
 

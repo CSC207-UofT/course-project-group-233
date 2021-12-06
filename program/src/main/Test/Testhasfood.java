@@ -1,6 +1,6 @@
 package Test;
 
-import Food.ManageFood;
+import Food.*;
 
 import java.io.IOException;
 

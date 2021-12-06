@@ -1,7 +1,7 @@
 package Test;
 
-import OtherObjects.ManageLinkedList;
-import OtherObjects.ModLinkedList;
+import OtherObjects.*;
+//import OtherObjects.ModLinkedList;
 
 import java.io.IOException;
 

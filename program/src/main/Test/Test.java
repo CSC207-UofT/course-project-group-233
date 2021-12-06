@@ -1,7 +1,7 @@
 package Test;
 
-import OtherObjects.ModDate;
-import OtherObjects.ModLinkedList;
+import OtherObjects.*;
+//import OtherObjects.ModLinkedList;
 
 import java.io.File;
 import java.io.FileWriter;

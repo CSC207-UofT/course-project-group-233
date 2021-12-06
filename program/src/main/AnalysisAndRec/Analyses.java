@@ -1,13 +1,13 @@
 package AnalysisAndRec;
 
 import Account.*;
-import DateAndObject.DateAndExercise;
-import DateAndObject.DateAndFood;
-import Exercise.ManageExercise;
-import Food.ManageFood;
-import OtherObjects.LLwithObject;
-import OtherObjects.ManageLinkedList;
-import OtherObjects.ModLinkedList;
+import DateAndObject.*;
+//import DateAndObject.DateAndFood;
+import Exercise.*;
+import Food.*;
+import OtherObjects.*;
+//import OtherObjects.ManageLinkedList;
+//import OtherObjects.ModLinkedList;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -24,7 +24,6 @@ public class Analyses {
                     Double.toString(foodman.getCalorie_Per_Gram(i.getFood().getName()))+
                     "Total Calorie: "+Double.toString(foodman.getTotalCal(i.getFood()))+"\n");
 
-
         }
         return result;
     }
@@ -37,7 +36,6 @@ public class Analyses {
                     +"  "+Double.toString(i.getExercise().getTime())+"  minutes. "+
                     "Total Calorie Burned: "+
                     Double.toString(exman.getTotalExCal(i.getExercise(),weight ))+"\n");
-
 
         }
         return result;
