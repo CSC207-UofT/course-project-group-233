@@ -67,7 +67,6 @@ public class Recommendation {
             if (gender.equals("m")){
                 if (weight > 120.0){
                     recom.add("Walking slowly");
-
                 }
                 else{
                     recom.add("Weightlifting");
@@ -78,7 +77,6 @@ public class Recommendation {
                     recom.add("Basketball");
                     recom.add("Hiking");
                     recom.add("Badminton");
-
                 }
             }
             else{
@@ -94,7 +92,6 @@ public class Recommendation {
                     recom.add("Dancing");
                     recom.add("Hiking");
                     recom.add("Badminton");
-
                 }
             }
         }

@@ -24,7 +24,6 @@ public class Analyses {
                     Double.toString(foodman.getCalorie_Per_Gram(i.getFood().getName()))+
                     "Total Calorie: "+Double.toString(foodman.getTotalCal(i.getFood()))+"\n");
 
-
         }
         return result;
     }
@@ -37,7 +36,6 @@ public class Analyses {
                     +"  "+Double.toString(i.getExercise().getTime())+"  minutes. "+
                     "Total Calorie Burned: "+
                     Double.toString(exman.getTotalExCal(i.getExercise(),weight ))+"\n");
-
 
         }
         return result;
