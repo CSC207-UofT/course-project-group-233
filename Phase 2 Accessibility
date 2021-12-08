@@ -1,0 +1,42 @@
+Q1: For each Principle of Universal Design. Write 2-5 sentences to explain
+which features your program adhere to the principle.
+Principle 1: Equitable Use
+1. All functionalities of our program are open to all users by setting all the functions public to users.
+2. All users have the identical privacy protections by setting all users information as private attributes.
+Therefore, Our program adheres the Equitable Use Principle.
+
+Principle 2: Flexibility in Use
+1. Since all functionalities are set to be public, users could choose which one and when to use.
+2. Then, we add some notifications (such as register/login), users know where to click to use some functionalities.
+3. Moreover, our program is based on clicking for interaction,
+   both left- and right-handed users could use it without problem.
+Thus, Our program adheres the Flexibility in Use Principle.
+
+Principle 3: Simple and Intuitive Use
+1. Our program would give feedback (eg. success/failed) after they try to login/register.
+   This helps users to understand which state they are in right now.
+Possible Improvement:
+We could add different language libraries into our program,
+so that people not understanding English could also use our program.
+Thus, Our program partially adheres the Simple and Intuitive Use Principle.
+
+
+Principle 4: Perceptible Information
+
+
+Principle 5: Tolerance for Error
+
+
+Principle 6: Low Physical Effort
+
+
+Principle 7: Size and Space for Approach and Use
+
+
+
+Q2: Write a paragraph about who you would market your program towards.
+
+
+
+
+Q3: Write a paragraph about whether or not your program is less likely to be used by certain demographics.
