@@ -16,19 +16,29 @@ Principle 3: Simple and Intuitive Use
 1. Our program would give feedback (eg. success/failed) after they try to login/register.
    This helps users to understand which state they are in right now.
 Possible Improvement:
-We could add different language libraries into our program,
-so that people not understanding English could also use our program.
+   We could add different language libraries into our program,
+   so that people not understanding English could also use our program.
 Thus, Our program partially adheres the Simple and Intuitive Use Principle.
 
 
 Principle 4: Perceptible Information
-
+1. In the login interface, the places for entering username and password
+   have difference color compared to surroundings.
+Possible Improvement:
+   When user chooses a specific Food/Exercise, we could not only show the name of the object,
+   but also includes a pronunciation of name for the choice.
+Thus, Our program partially adheres the Perceptible Information Principle.
 
 Principle 5: Tolerance for Error
-
+1. In the login interface, the user could re-login if they enter wrong username or password previously.
+2. The user could always change his/her personal information at any time.
+   If user provides wrong information before, they could correct it.
+Thus, Our program partially adheres the Tolerance for Error Principle.
 
 Principle 6: Low Physical Effort
-
+1. Our program only requires several inputs by hand to record the Food/Exercise.
+   No hard body gestures needed to use the program.
+Thus, Our program partially adheres the Low Physical Effort Principle.
 
 Principle 7: Size and Space for Approach and Use
 The information that the screen shows is quite clear and it is easy for the users to use.
