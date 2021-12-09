@@ -1,5 +1,8 @@
+##########################################################################################
+
 Q1: For each Principle of Universal Design. Write 2-5 sentences to explain
 which features your program adhere to the principle.
+
 Principle 1: Equitable Use
 1. All functionalities of our program are open to all users by setting all the functions public to users.
 2. All users have the identical privacy protections by setting all users information as private attributes.
@@ -20,24 +23,32 @@ Possible Improvement:
    so that people not understanding English could also use our program.
 Thus, Our program partially adheres the Simple and Intuitive Use Principle.
 
-
 Principle 4: Perceptible Information
 1. In the login interface, the places for entering username and password
    have difference color compared to surroundings.
+2. We designed that all of our clickable button surrounded by box in order to give users more necessary information.
 Possible Improvement:
-   When user chooses a specific Food/Exercise, we could not only show the name of the object,
+1. When user chooses a specific Food/Exercise, we could not only show the name of the object,
    but also includes a pronunciation of name for the choice.
+2. We did not implement auto-save functions, so users have to manually save all the information they input before
+    close the application or use the analyze function.
+    It might confuse users at the beginning of the usage of our application.
 Thus, Our program partially adheres the Perceptible Information Principle.
 
 Principle 5: Tolerance for Error
 1. In the login interface, the user could re-login if they enter wrong username or password previously.
 2. The user could always change his/her personal information at any time.
    If user provides wrong information before, they could correct it.
+3. If users did not remember the name of exercise or food, they could search for it using
+    the first letter of the name.
 Thus, Our program partially adheres the Tolerance for Error Principle.
 
 Principle 6: Low Physical Effort
 1. Our program only requires several inputs by hand to record the Food/Exercise.
    No hard body gestures needed to use the program.
+2. The information of users need to only save for once (gender, weight, etc.)
+3. Our application can auto save the input which users inputted last time, it could save some time
+    since people love to do one specific exercise everyday.
 Thus, Our program partially adheres the Low Physical Effort Principle.
 
 Principle 7: Size and Space for Approach and Use
@@ -46,15 +57,18 @@ In addition, this program also allows more than one person to use. And they will
 Moreover, the program can be used on the PC application, thus, the space used by the phone or computer
 will be quite less.
 
+##########################################################################################
 
 Q2: Write a paragraph about who you would market your program towards.
 Our program will focus on the people who like to do the sports or the people wo focus on their health body.
 The program that we built can help people to track their lifestyles and offer some suggestions.
 Not only the food but also the exercise. Once people combine these two aspects, they will become more healthy.
 
-
+##########################################################################################
 
 Q3: Write a paragraph about whether or not your program is less likely to be used by certain demographics.
 Our program will not be used  by the older people. They may be not used to record their life using the phone.
 However, their sons or daughters  may use this program to help. Moreover, the people who are not interested in
 exercise, may not use this program.
+
+##########################################################################################
