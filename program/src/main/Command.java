@@ -128,4 +128,3 @@
 // they will get several balanced meal plans.
 //For workout plan recommendation, the user needs to enter the desired workout time and amount of calories that
 // he/she wants to burn. By doing so,  they will get a few recommended workout plans.
-//
