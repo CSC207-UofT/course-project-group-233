@@ -28,5 +28,4 @@ public class DateAndObj {
         this.object = object;
     }
 
-
 }

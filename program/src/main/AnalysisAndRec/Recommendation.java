@@ -4,12 +4,14 @@ import Account.*;
 
 import java.util.ArrayList;
 
+// Use Case Class AnalysisAndRec.Recommendation
 // based on the users' age, gender and weight, give the suggestion for the users on exercise or the food.
-
 public class Recommendation {
 
+    //contributor
     public Recommendation(){}
 
+    // recommendation of exercise
     public ArrayList<String> recom_exercise(String gender, int age, double weight){
         ArrayList<String> recom = new ArrayList<String>();
         // the suggestion for the people who are above 60 years old (include 60).

@@ -1,9 +1,7 @@
 package Account;
 
 import DateAndObject.*;
-//import DateAndObject.DateAndFood;
 import OtherObjects.*;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -24,7 +22,6 @@ public class ManageAccount {
                 if(line.equals(username)){has_user=true;}
             }
             else {line=s.nextLine();}
-
         }
         return has_user;
     }
@@ -48,14 +45,12 @@ public class ManageAccount {
                 if(line.equals(username)&s.nextLine().equals(passward)){login_success=true;}
             }
             else {line=s.nextLine();}
-
         }
         return login_success;
 
     }
 
     public boolean isInt(String str) {
-
         try {
             @SuppressWarnings("unused")
             int x = Integer.parseInt(str);
@@ -63,11 +58,9 @@ public class ManageAccount {
         } catch (NumberFormatException e) {
             return false; //String is not an Integer
         }
-
     }
 
     public boolean isDouble(String str) {
-
         try {
             @SuppressWarnings("unused")
             Double x = Double.parseDouble(str);
@@ -75,10 +68,5 @@ public class ManageAccount {
         } catch (NumberFormatException e) {
             return false; //String is not an double
         }
-
     }
-
-
-
 }
-

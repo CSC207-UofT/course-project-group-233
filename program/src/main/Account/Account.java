@@ -1,16 +1,13 @@
 package Account;
 
 import DateAndObject.*;
-//import DateAndObject.DateAndFood;
 import Food.*;
 import OtherObjects.*;
-//import OtherObjects.ModLinkedList;
 import Exercise.*;
-
 import java.io.*;
 import java.util.*;
 
-    // Entity Class Account.Account
+// Entity Class Account.Account
 public class Account {
 
     private String password, username; // user's name and password
@@ -119,8 +116,6 @@ public class Account {
                 pw.println(i.getExercise().getName());
                 pw.println(i.getExercise().getTime());
             }
-
-
             pw.println("*userend");
             pw.close();
         }
