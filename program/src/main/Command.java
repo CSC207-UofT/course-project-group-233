@@ -1,4 +1,4 @@
-//THIS FILE IS ONLY FOR PHASE 0,
+//THIS FILE IS ONLY FOR PHASE 0.
 
 
 //import java.io.FileNotFoundException;
@@ -120,3 +120,11 @@
 //        System.out.println("Thank you for using our fitness app. Hope to see you next time!");
 //    }
 //}
+
+//The users can be guided according to their needs, not only the workout but also the food. Once they make the request
+// of their need, the app will offer several workout plan recommendations  and meal plan recommendations for users
+// to choose.
+//For food recommendation, the user needs to enter the amount of calories that he/she wants to intake. By doing so,
+// they will get several balanced meal plans.
+//For workout plan recommendation, the user needs to enter the desired workout time and amount of calories that
+// he/she wants to burn. By doing so,  they will get a few recommended workout plans.
